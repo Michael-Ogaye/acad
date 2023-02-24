@@ -1,0 +1,1 @@
+web: gunicorn academicmain.wsgi --log-file -
