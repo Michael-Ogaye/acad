@@ -3,9 +3,10 @@ from django.shortcuts import render,redirect
 from .models import Subscriber
 from .email import sendEmail
 from django.contrib import messages
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
-
+@csrf_exempt()
 def home(request):
    if request.method=='POST':
         name=request.POST.get('name')
