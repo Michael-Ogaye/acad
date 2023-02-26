@@ -100,6 +100,7 @@ class StudentManager(models.Manager):
         return queryset  
 
 class Student(CustomUser):
+
     class Meta:
         proxy=True
     objects=StudentManager()
@@ -122,6 +123,7 @@ class ProfessorManager(models.Manager):
             email = email
         )
         user.set_password(password)
+        
         user.save(using = self._db)
         return user
         
@@ -134,13 +136,16 @@ class ProfessorManager(models.Manager):
 
       
 class Professor(CustomUser):
+
+    
+    
     class Meta :
         proxy = True
     objects = ProfessorManager()
       
     def save(self  , *args , **kwargs):
         self.type = CustomUser.Types.PROFESSOR
-        self.is_teacher = True
+        self.is_professor = True
         return super().save(*args , **kwargs)
 
 
@@ -174,7 +179,7 @@ class Cadmin(CustomUser):
       
     def save(self  , *args , **kwargs):
         self.type = CustomUser.Types.C_ADMIN
-        self.is_teacher = True
+        self.is_c_admin = True
         return super().save(*args , **kwargs)
 
 # Create your models here.
