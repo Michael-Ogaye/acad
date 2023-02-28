@@ -7,13 +7,14 @@ from django.utils.translation import gettext as _
 
 
 
+
 class CustomUserManager(BaseUserManager):
     """
     Custom user model manager where email is the unique identifier
     for authentication instead of usernames.
     """
 
-    def create_user(self , email ,phone_number, password = None,):
+    def create_user(self , email ,phone_number,username, password = None,):
         if not email or len(email) <= 0 : 
             raise  ValueError("Email field is required !")
         if not password :
@@ -21,17 +22,19 @@ class CustomUserManager(BaseUserManager):
           
         user = self.model(
             email = self.normalize_email(email) ,
-            phone_number=phone_number 
+            phone_number=phone_number ,
+            username=username
         )
         user.set_password(password)
         user.save(using = self._db)
         return user
       
-    def create_superuser(self , email , password,phone_number):
+    def create_superuser(self , email , username,password,phone_number):
         user = self.create_user(
             email = self.normalize_email(email) ,
             phone_number=phone_number,
-            password = password
+            password = password,
+            username=username
         )
         user.is_admin = True
         user.is_staff = True
@@ -45,12 +48,14 @@ class CustomUser(AbstractBaseUser):
         PROFESSOR = "PROFESSOR" , "professor"
         C_ADMIN='C_ADMIN','c_admin'
           
-     type = models.CharField(max_length = 20 , choices = Types.choices , 
+     type = models.CharField(max_length = 40 , choices = Types.choices , 
                             # Default is user is teacher
                             default = Types.C_ADMIN)
      email = models.EmailField(max_length = 200 , unique = True)
-     phone_number=models.PositiveIntegerField()
-
+     phone_number=models.CharField(max_length=65)
+     username=models.CharField(max_length=30,null=True)
+     password=models.CharField(max_length=100)
+     date_joined=models.DateTimeField(auto_now_add=True,max_length=100)
      is_active = models.BooleanField(default = True)
      is_admin = models.BooleanField(default = False)
      is_staff = models.BooleanField(default = False)
@@ -59,9 +64,9 @@ class CustomUser(AbstractBaseUser):
      is_student = models.BooleanField(default = False)
      is_professor = models.BooleanField(default = False)
      is_c_admin=models.BooleanField(default=False)
-
+    
      USERNAME_FIELD='email'
-     REQUIRED_FIELDS=('phone_number',)
+     REQUIRED_FIELDS=('phone_number','username',)
      objects=CustomUserManager()
 
      def __str__(self):
@@ -81,14 +86,15 @@ class CustomUser(AbstractBaseUser):
 
 
 class StudentManager(models.Manager):
-    def create_user(self , email , password = None):
+    def create_user(self , email ,username, password = None):
         if not email or len(email) <= 0 : 
             raise  ValueError("Email field is required !")
         if not password :
             raise ValueError("Password is must !")
         email  = email.lower()
         user = self.model(
-            email = email
+            email = email,
+            username=username
         )
         user.set_password(password)
         user.save(using = self._db)
@@ -113,14 +119,15 @@ class Student(CustomUser):
 
 
 class ProfessorManager(models.Manager):
-    def create_user(self , email , password = None):
+    def create_user(self , email ,username, password = None):
         if not email or len(email) <= 0 : 
             raise  ValueError("Email field is required !")
         if not password :
             raise ValueError("Password is must !")
         email = email.lower()
         user = self.model(
-            email = email
+            email = email,
+            username=username
         )
         user.set_password(password)
         
@@ -151,14 +158,15 @@ class Professor(CustomUser):
 
 
 class CadminManager(models.Manager):
-    def create_user(self , email , password = None):
+    def create_user(self , email ,username, password = None):
         if not email or len(email) <= 0 : 
             raise  ValueError("Email field is required !")
         if not password :
             raise ValueError("Password is must !")
         email = email.lower()
         user = self.model(
-            email = email
+            email = email,
+            username=username
         )
         user.set_password(password)
         user.save(using = self._db)

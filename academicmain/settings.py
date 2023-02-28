@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'Authapp',
     'crispy_forms',
     'rest_framework',
+    'widget_tweaks',
     'bootstrap4',
 ]
 

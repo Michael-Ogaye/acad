@@ -6,12 +6,9 @@ from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 import threading
 
-def sendEmail(request,res):
-    context ={
-        "title":"Subscription",
-        "content":"Welcome to the Benbrands, dear subscriber. "
-    }
-    html_content = render_to_string("acadapp/emails.html", context)
+def sendEmail(request,res,template_n,context):
+    
+    html_content = render_to_string(template_n, context)
     text_content = strip_tags(html_content)
     thread = threading.Thread(target=emailSender, args=("Welcome to BenBrands", text_content,html_content,res))
     thread.start()

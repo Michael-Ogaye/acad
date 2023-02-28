@@ -1,10 +1,41 @@
 .join{
     margin: 0 auto;
     
-    width: 30%;
-    padding: 1em 2em 1em 2em;
-    border-radius: 5%;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: cover;
+    clip-path: circle();
+    padding: 1em 1em 1em 1em;
+    padding: 10em;
+    background-color: rgba(232, 208, 237, 0.3);
+    position: relative;
+    background-blend-mode: difference;
+    opacity: 0;
+    z-index: 4;
+    transition: all 5s ease-in-out;
     
+
+    
+}
+
+.appear{
+    opacity: 1;
+}
+
+.join::before{
+    content: 'hello';
+    position: absolute;
+    top: 50%;
+    left:50%;
+    width: 80%;
+    height:80% ;
+   clip-path: circle();
+    transform: translate(-50%,-50%);
+    background-color: rgba(229, 189, 236,0.5);
+    z-index: -2;
+
+
+
 }
 .join h6,.mr{
     text-align: center;

@@ -123,7 +123,7 @@
     </div>
   </div>
 
-  <div class="join" >
+  <div class="join" id="jd">
     <h6>Join us today</h6>
 
    <div class="mr" >
@@ -252,7 +252,7 @@
 
                
 
-                <p class="more-info">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doers eiusmod tempor incididunt ut labore et dolore dolor dolor sit amet, consectetur adipiscing elit, sed doers eiusmod.</p>
+                <p class="more-info">We are happy to be part of your learning eperience.</p>
               </div>
             </div>
           </div>
@@ -299,7 +299,7 @@
                   <div class="row">
                     <div class="col-lg-12">
                       <div class="section-heading">
-                        <h2><em>Contact Us</em> &amp; Get In <span>Touch</span></h2>
+                        <h2><em>Contact Us</em>  <span></span></h2>
                       </div>
                     </div>
 
@@ -391,6 +391,17 @@
 let sp=document.getElementById('dat')
  let dt=new Date().getFullYear()
  sp.innerHTML=`Copyright © ${dt.toString()} `
+
+
+ let jd=document.getElementById('jd')
+ let observer=new IntersectionObserver((ob)=>{
+  ob.forEach((b)=>{
+    if (b.isIntersecting){
+      b.target.classList.toggle('appear')
+    }
+  })
+ })
+ observer.observe(jd)
 
 </script>
 
