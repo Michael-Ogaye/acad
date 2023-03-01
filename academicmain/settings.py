@@ -86,31 +86,33 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'academicmain.wsgi.application'
 
+MODE=config('MODE')
+
+
+
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
+if MODE=='dev':
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+    DATABASES={
+            'default':{
+            'ENGINE':'django.db.backends.postgresql',
+            'NAME':config('DB_NAME'),
+            'USER':config('DB_USER'),
+            'PASSWORD':config('DB_PASSWORD'),
+            }
+        }
+else:
+
+    DATABASES = {
+        "default": dj_database_url.config(default=config('DATABASE_URL'), conn_max_age=1800),
+    }
+    
 
 
-# DATABASES={
-#         'default':{
-#         'ENGINE':'django.db.backends.postgresql',
-#         'NAME':config('DB_NAME'),
-#         'USER':config('DB_USER'),
-#         'PASSWORD':config('DB_PASSWORD'),
-#         }
-#     }
 
 
-DATABASES = {
-    "default": dj_database_url.config(default=config('DATABASE_URL'), conn_max_age=1800),
-}
 
 
 
