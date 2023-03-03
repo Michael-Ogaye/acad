@@ -29,12 +29,20 @@ def stureg(request):
           stud= form.save(commit=False)
          
           stud.is_active=False
-          activate_account(request,stud)
+          
+          
 
           stud.save()
+          activate_account(request,stud)
+          print(stud.pk)
+          print(stud.id)
          
           messages.success(request,f'A link has been sent to your email acccount,please confirm your account and log in')
           return redirect('login')
+       
+       else:
+          messages.error(request,'Your form is invalid, phone number or email already exists')
+          return HttpResponse('student with the same details exists')
 
     else:
        form=SRegForm()
@@ -50,8 +58,9 @@ def preg(request):
           
           pro= form.save(commit=False)
           pro.is_active=False
-          activate_account(request,pro)
+         
           pro.save()
+          activate_account(request,pro)
           messages.success(request,f'A link has been sent to your email acccount,please confirm your account and log in')
           return redirect('login')
        else:
@@ -103,13 +112,16 @@ def signin(request):
 
 
 def activate(request, uidb64, token):  
-    User = get_user_model()  
+    from .models import CustomUser
     try:  
         uid = force_str(urlsafe_base64_decode(uidb64))
 
-        user = User.objects.get(pk=uid)  
-    except(TypeError, ValueError, OverflowError, User.DoesNotExist):  
+        user = CustomUser.objects.get(pk=uid)  
+    except(TypeError, ValueError, OverflowError, CustomUser.DoesNotExist):  
         user = None  
+    print(user)
+    
+    print(token_g.check_token(user, token))
     if user is not None and token_g.check_token(user, token):  
         user.is_active = True  
         user.save()  

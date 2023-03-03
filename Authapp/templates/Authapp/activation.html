@@ -4,7 +4,7 @@
 {% block content %}
 <h2 style="text-align: center; color: purple;">Welcome to Feisal</h2>
 <hr>
-<img src="{% static 'foreign/assets/images/profs.jpg' %}" alt="" style="display: block; width: 100%; height: 30vh; margin: 0 auto; margin-top: 1em; margin-bottom: 1em;">
+<!-- img src="{% static 'foreign/assets/images/profs.jpg' %}" alt="" style="display: block; width: 100%; height: 30vh; margin: 0 auto; margin-top: 1em; margin-bottom: 1em;"> -->
 <div>
     <p style=" margin: 4px 7px;">To confirm activate your account follow the link</p>
     <a href="{{ protocol }}://{{ domain }}{% url 'activate_a' uidb64=uid token=token %}">Activate account</a>

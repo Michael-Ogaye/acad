@@ -27,10 +27,10 @@ class ProfessorProfile(models.Model):
 
     @receiver(post_save, sender=Professor)
     def save_user_profile(sender, instance, **kwargs):
-        instance.profile.save()
+        instance.pro_profile.save()
 
     def save_profile(self):
-        self.proffesor.profile.save()
+        self.professor.pro_profile.save()
 
     def delete_profile(self):
         self.delete()
