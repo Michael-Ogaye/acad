@@ -4,12 +4,12 @@ from .forms import SRegForm,PRegForm,SignForm
 from django.contrib import messages
 from django.template.loader import render_to_string
 from django.contrib.sites.shortcuts import get_current_site
-from django.utils.encoding import force_bytes
-from django.contrib.auth import authenticate,login,logout
+from django.utils.encoding import force_bytes,force_str
+from django.contrib.auth import authenticate,login,logout,get_user_model
 from django.db.models.query_utils import Q
-from django.contrib.auth.tokens import default_token_generator
+from django.contrib.auth.tokens import default_token_generator as token_g
 from  .models import CustomUser,Student,Professor
-
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import make_password,check_password
 # Create your views here.
 # from academicmain.mytoken import account_activation_token
@@ -19,6 +19,7 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 
 from django.core.mail import send_mail, BadHeaderError
 from django.contrib.auth.forms import PasswordResetForm
+from .activation import activate_account
 
 def stureg(request):
     if request.method=='POST':
@@ -26,20 +27,14 @@ def stureg(request):
        form=SRegForm(request.POST)
        if form.is_valid():
           stud= form.save(commit=False)
+         
+          stud.is_active=False
+          activate_account(request,stud)
 
-          stud.password =make_password(form.cleaned_data['password'])
-          stud.is_active=True
           stud.save()
-          current_site = get_current_site(request)  
-
-         #  cntx_em={  
-         #        'user': stud,  
-         #        'domain': current_site.domain,  
-         #        'uid':urlsafe_base64_encode(force_bytes(stud.pk)),  
-         #        'token':account_activation_token.make_token(stud),  
-         #    }
+         
           messages.success(request,f'A link has been sent to your email acccount,please confirm your account and log in')
-          return HttpResponse('succesfully registered')
+          return redirect('login')
 
     else:
        form=SRegForm()
@@ -47,18 +42,18 @@ def stureg(request):
 
 
 def preg(request):
-    if request.method =='POST':
+    if request.method=='POST':
        print(request.POST)
        form=PRegForm(request.POST)
+       print(form)
        if form.is_valid():
           
           pro= form.save(commit=False)
-
-          pro.password =make_password(form.cleaned_data['password'])
           pro.is_active=False
+          activate_account(request,pro)
           pro.save()
           messages.success(request,f'A link has been sent to your email acccount,please confirm your account and log in')
-          return HttpResponse('succesfully registered')
+          return redirect('login')
        else:
           
           form=SRegForm()
@@ -71,14 +66,18 @@ def preg(request):
 
 
 def signin(request):
-   if request.method=='POST':
+   form=SignForm(initial={})
+   if request.method =='POST':
       form=SignForm(request.POST)
+      print(request.POST)
+
+      print(form)
     
       if form.is_valid():
          print('form is valid...first test')
          password=form.cleaned_data.get('password')
          email=form.cleaned_data.get('email')
-         user=authenticate(request,email=email,password=password)
+         user=authenticate(request,username=email,password=password)
          if user is not None:
             login(request,user)
             if user.is_student:
@@ -102,19 +101,21 @@ def signin(request):
 
 
 
-# def activate(request, uidb64, token):  
-#     User = get_user_model()  
-#     try:  
-#         uid = force_text(urlsafe_base64_decode(uidb64))  
-#         user = User.objects.get(pk=uid)  
-#     except(TypeError, ValueError, OverflowError, User.DoesNotExist):  
-#         user = None  
-#     if user is not None and account_activation_token.check_token(user, token):  
-#         user.is_active = True  
-#         user.save()  
-#         return HttpResponse('Thank you for your email confirmation. Now you can login your account.')  
-#     else:  
-#         return HttpResponse('Activation link is invalid!')  
+
+def activate(request, uidb64, token):  
+    User = get_user_model()  
+    try:  
+        uid = force_str(urlsafe_base64_decode(uidb64))
+
+        user = User.objects.get(pk=uid)  
+    except(TypeError, ValueError, OverflowError, User.DoesNotExist):  
+        user = None  
+    if user is not None and token_g.check_token(user, token):  
+        user.is_active = True  
+        user.save()  
+        return redirect('login')
+    else:  
+        return HttpResponse('Activation link is invalid!')  
 
 
 
@@ -133,10 +134,10 @@ def password_reset_request(request):
                   c = {
                   "email":user.email,
                   'domain':get_current_site(request).domain,
-                  'site_name': 'Benbrands',
+                  'site_name': 'Feisal',
                   "uid": urlsafe_base64_encode(force_bytes(user.pk)),
                   "user": user,
-                  'token': default_token_generator.make_token(user),
+                  'token': token_g.make_token(user),
                   'protocol': 'http',
                   }
                   email = render_to_string(email_template_name, c)
@@ -146,4 +147,12 @@ def password_reset_request(request):
                      return HttpResponse('Invalid header found.')
                   return redirect ("/password_reset/done/")
       password_reset_form = PasswordResetForm()
-      return render(request=request, template_name="Authapp/password_reset.html", context={"password_reset_form":password_reset_form})   
+  
+ 
+ 
+      return render(request=request, template_name="Authapp/password_reset.html", context={"password_reset_form":password_reset_form})  
+@login_required(login_url='login')
+def signout(request):
+   logout(request)
+   return redirect('login')
+    

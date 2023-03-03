@@ -10,7 +10,7 @@ def sendEmail(request,res,template_n,context):
     
     html_content = render_to_string(template_n, context)
     text_content = strip_tags(html_content)
-    thread = threading.Thread(target=emailSender, args=("Welcome to BenBrands", text_content,html_content,res))
+    thread = threading.Thread(target=emailSender, args=("Feisal", text_content,html_content,res))
     thread.start()
     return HttpResponse("Email Sent successfully")
 

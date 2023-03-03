@@ -14,16 +14,27 @@
                 <div class="card-body">
                     
                     <div class="card-text">
-                        <form action="" method="post" novalidate class="auth" id="auth">
+                        <form  method="post" action="{% url 'login' %}" class="auth" id="auth">
+
+
+
                             {% csrf_token%}
                              <h2>Login</h2>
+                             {% for errors in form.non_field_errors%}
+                             <h1>{{error}}</h1>
+
+                             {% endfor%}
+
+                             {{ form.non_field_errors }}
+                             {{ form.email.errors }}
+                             {{form.password.errors}}
  
                             <div class="form-group fm ">
                                 <!-- <label class="form-label"  for="email"> Email</label> -->
                                <fieldset>
                                 <legend>Email</legend>
                                  
-                                {% render_field form.email class="form-control inp " placeholder="i.e benomolo@gmail.com" type="text " required="true" name="email" id="email" %}
+                                {% render_field form.email class="form-control inp " placeholder="i.e benomolo@gmail.com"   name="email" id="id_email" %}
                                </fieldset>
 
                                <p class="warn">This field is required and must be an email</p>
@@ -40,7 +51,7 @@
                                     
                                 
                                  
-                                {% render_field form.password type="text" class="form-control inp " id="pass" placeholder="*****" type="password" required="true" name="password" %}
+                                {% render_field form.password type="text" class="form-control inp " id="id_password" placeholder="*****"   name="password" %}
                                 </fieldset>
                                 <p class="warn">This field is required </p>
                               </div>
@@ -51,9 +62,10 @@
                               
    
                             
-                            <button type="submit" class="btn bt" id="sign_btn">Register </button>
+                            <input type="submit" class="btn bt" id="sign_btn">Login </input>
                             {{form.errors}}
-                        </form>Forgotten password? <a href="{% url 'password_reset'%}">Reset Password</a></small>
+                        </form>
+                        Forgotten password? <a href="{% url 'password_reset'%}">Reset Password</a></small>
                     </div>
                 </div>
             </div>

@@ -29,8 +29,12 @@ urlpatterns = [
     # path('account_default/', include('django.contrib.auth.urls')),
      path('password_reset/done/', auth_views.PasswordResetDoneView.as_view(template_name='main/password/password_reset_done.html'), name='password_reset_done'),
     path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name="main/password/password_reset_confirm.html"), name='password_reset_confirm'),
-    path('reset/done/', auth_views.PasswordResetCompleteView.as_view(template_name='main/password/password_reset_complete.html'), name='password_reset_complete'),      
+    path('reset/done/', auth_views.PasswordResetCompleteView.as_view(template_name='main/password/password_reset_complete.html'), name='password_reset_complete'), 
+    path('student/',include('studentapp.urls')) ,
+    path('professor/',include('professorapp.urls')) , 
+    path('feasal_admin/',include('adminapp.urls')),
+
 ]
 
-# urlpatterns+=staticfiles_urlpatterns()
+urlpatterns+=staticfiles_urlpatterns()
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -36,7 +36,7 @@
                                     <legend>
                                         Phone Number
                                     </legend>
-                                    {% render_field form.phone_number type="text" class="form-control inp " placeholder="i.e 254707957701" id="phone" %}
+                                    {% render_field form.phone_number type="text" class="form-control inp " name="phone_number" placeholder="i.e 254707957701" id="phone" %}
                                 </fieldset>
                                 <p class="warn">This field is required </p>
                             </div>
@@ -69,7 +69,14 @@
 
 
 
-
+                              <div class="form-group fm">
+                                <fieldset>
+                                    <legend>confirm Password</legend>
+                
+                                {% render_field form.password1 type="text" class="form-control inp " id="pass" placeholder="*****" type="password" required="true" name="password1" %}
+                                </fieldset>
+                                <p class="warn">This field is required </p>
+                              </div>
                               
    
                             

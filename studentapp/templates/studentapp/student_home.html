@@ -1,0 +1,71 @@
+
+{% load static %}
+{% load widget_tweaks %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'foreign/css/home.css'%}">
+
+{% endblock %}
+
+<header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <h2 class="logo" style="color: white;">
+                        Student App
+
+                    </h2>
+                    <!-- ***** Logo Start ***** -->
+                    <!-- <a href="index.html" class="logo">
+                        <img src="{% static 'foreign/assets/images/logo.png'%}" alt="" style="max-width: 112px;">
+                    </a> -->
+                    <!-- ***** Logo End ***** -->
+                    <!-- ***** Menu Start ***** -->
+                    <ul class="nav">
+                      <li class="scroll-to-section"><a href="{% url 'hm' %}" class="active">Home</a></li>
+
+                      <li class="has-sub">
+                          <a href="javascript:void(0)">Tasks</a>
+                          <ul class="sub-menu">
+                              <li><a href="#">Upload Tasks</a></li>
+                              <li><a href="#">Check Tasks</a></li>
+                              <li><a href="#">Remove Tasks</a></li>
+                          </ul>
+                      </li>
+
+
+                      <li class="has-sub">
+                        <a href="javascript:void(0)">Accounts</a>
+                        <ul class="sub-menu">
+                            <li><a href="#">Logout</a></li>
+                            <li><a href="#">Profile</a></li>
+                            <li><a href="#">Update profile</a></li>
+                        </ul>
+                    </li>
+
+                      
+                  </ul>   
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                    <!-- ***** Menu End ***** -->
+                </nav>
+            </div>
+        </div>
+    </div>
+  </header>
+
+
+{% block content %}
+
+
+            
+
+        
+
+{% endblock %}
+
+{% block script %}
+
+{% endblock%}
+

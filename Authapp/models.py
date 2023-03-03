@@ -1,7 +1,8 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser
+from django.contrib.auth.models import AbstractBaseUser,PermissionsMixin
 from django.contrib.auth.base_user import BaseUserManager
 from django.utils.translation import gettext as _
+from django.core.validators import RegexValidator
 
 
 
@@ -13,8 +14,9 @@ class CustomUserManager(BaseUserManager):
     Custom user model manager where email is the unique identifier
     for authentication instead of usernames.
     """
+    use_in_migrations = True
 
-    def create_user(self , email ,phone_number,username, password = None,):
+    def create_user(self , email ,phone_number,username, password = None,**extra_fields):
         if not email or len(email) <= 0 : 
             raise  ValueError("Email field is required !")
         if not password :
@@ -23,18 +25,20 @@ class CustomUserManager(BaseUserManager):
         user = self.model(
             email = self.normalize_email(email) ,
             phone_number=phone_number ,
-            username=username
+            username=username,
+            **extra_fields
         )
         user.set_password(password)
         user.save(using = self._db)
         return user
       
-    def create_superuser(self , email , username,password,phone_number):
+    def create_superuser(self , email , username,password,phone_number,**extra_fields):
         user = self.create_user(
             email = self.normalize_email(email) ,
             phone_number=phone_number,
             password = password,
-            username=username
+            username=username,
+            **extra_fields
         )
         user.is_admin = True
         user.is_staff = True
@@ -42,17 +46,19 @@ class CustomUserManager(BaseUserManager):
         user.save(using = self._db)
         return user
 
-class CustomUser(AbstractBaseUser):
+class CustomUser(AbstractBaseUser,PermissionsMixin):
      class Types(models.TextChoices):
         STUDENT = "STUDENT" , "student"
         PROFESSOR = "PROFESSOR" , "professor"
         C_ADMIN='C_ADMIN','c_admin'
-          
+
+     phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$',
+                                 message="Phone number must be entered in the format: '+9'. Up to 15 digits allowed.")     
      type = models.CharField(max_length = 40 , choices = Types.choices , 
                             # Default is user is teacher
                             default = Types.C_ADMIN)
      email = models.EmailField(max_length = 200 , unique = True)
-     phone_number=models.CharField(max_length=65)
+     phone_number=models.CharField(max_length=65,unique=True)
      username=models.CharField(max_length=30,null=True)
      password=models.CharField(max_length=100)
      date_joined=models.DateTimeField(auto_now_add=True,max_length=100)
@@ -86,7 +92,7 @@ class CustomUser(AbstractBaseUser):
 
 
 class StudentManager(models.Manager):
-    def create_user(self , email ,username, password = None):
+    def create_user(self , email ,username, password = None,**extra_fields):
         if not email or len(email) <= 0 : 
             raise  ValueError("Email field is required !")
         if not password :
@@ -94,7 +100,8 @@ class StudentManager(models.Manager):
         email  = email.lower()
         user = self.model(
             email = email,
-            username=username
+            username=username,
+            **extra_fields
         )
         user.set_password(password)
         user.save(using = self._db)
@@ -119,7 +126,7 @@ class Student(CustomUser):
 
 
 class ProfessorManager(models.Manager):
-    def create_user(self , email ,username, password = None):
+    def create_user(self , email ,username, password = None,**extra_fields):
         if not email or len(email) <= 0 : 
             raise  ValueError("Email field is required !")
         if not password :
@@ -127,7 +134,8 @@ class ProfessorManager(models.Manager):
         email = email.lower()
         user = self.model(
             email = email,
-            username=username
+            username=username,
+            **extra_fields
         )
         user.set_password(password)
         
