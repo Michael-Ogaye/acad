@@ -34,8 +34,6 @@ def stureg(request):
 
           stud.save()
           activate_account(request,stud)
-          print(stud.pk)
-          print(stud.id)
          
           messages.success(request,f'A link has been sent to your email acccount,please confirm your account and log in')
           return redirect('login')
@@ -53,7 +51,7 @@ def preg(request):
     if request.method=='POST':
        print(request.POST)
        form=PRegForm(request.POST)
-       print(form)
+       
        if form.is_valid():
           
           pro= form.save(commit=False)
@@ -78,16 +76,16 @@ def signin(request):
    form=SignForm(initial={})
    if request.method =='POST':
       form=SignForm(request.POST)
-      print(request.POST)
+      
 
-      print(form)
+      
     
       if form.is_valid():
          print('form is valid...first test')
          password=form.cleaned_data.get('password')
          email=form.cleaned_data.get('email')
          user=authenticate(request,username=email,password=password)
-         if user is not None:
+         if user is not None and user.is_active:
             login(request,user)
             if user.is_student:
                return HttpResponse('you will be directed to studentapp')
@@ -96,7 +94,7 @@ def signin(request):
             else:
                return HttpResponse('you are being directed to admin page shortly')
          else:
-            return HttpResponse('user doesnt exist')   
+            return HttpResponse('user doesnt exist or you have not activated your account')   
       else:
          form=SignForm()
          print('form is invalid')
@@ -119,7 +117,7 @@ def activate(request, uidb64, token):
         user = CustomUser.objects.get(pk=uid)  
     except(TypeError, ValueError, OverflowError, CustomUser.DoesNotExist):  
         user = None  
-    print(user)
+   
     
     print(token_g.check_token(user, token))
     if user is not None and token_g.check_token(user, token):  

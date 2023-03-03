@@ -23,7 +23,7 @@ class ProfessorProfile(models.Model):
     @receiver(post_save, sender=Professor)
     def create_user_profile(sender, instance, created, **kwargs):
         if created:
-            Professor.objects.create(professor=instance)
+            ProfessorProfile.objects.create(professor=instance)
 
     @receiver(post_save, sender=Professor)
     def save_user_profile(sender, instance, **kwargs):
