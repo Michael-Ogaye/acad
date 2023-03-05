@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth import get_user_model
 from Authapp.models import Student
 
+
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 from cloudinary.models import CloudinaryField
@@ -62,7 +63,7 @@ class Task(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     bid_amount=models.DecimalField(max_digits=7,decimal_places=2)
     stud=models.ForeignKey(Student,on_delete=models.CASCADE,related_name='tasks')
-    category=models.ForeignKey(TaskCategory,on_delete=models.SET_NULL,null=True)
+    category=models.ForeignKey(TaskCategory,on_delete=models.SET_NULL,null=True,blank=True)
     is_pending=models.BooleanField(default=True)
     is_complete=models.BooleanField(default=False)
     
@@ -70,14 +71,18 @@ class Task(models.Model):
     
 
     def __str__(self):
-     return str(self.name) + ' - ' + str(self.category.name)
+     return str(self.name) 
 
     class Meta:
      verbose_name_plural = "Tasks"
      
 
 
-
+class StudentReview(models.Model):
+   pass
+#    job=models.ManyToManyField(Job,related_name='stud_review')
+#    review=models.TextField()
+   
 
 # Create your models here.
 

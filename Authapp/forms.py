@@ -11,9 +11,9 @@ UserModel = get_user_model()
 class SRegForm(forms.ModelForm):
     error_messages = {
         'password_mismatch': ("The two password fields didn't match."),
-        'username_required': ("User name is a required field."),
+        'username_required': ("username field is required"),
         'phone_required':("Phone number is required"),
-        'password_required':("Password field is required"),
+        'password_required':("Password must have minimum of 5 characters"),
         'email_required':("email is required")
     }
     password1 = forms.CharField(label=("Password"),
@@ -37,38 +37,45 @@ class SRegForm(forms.ModelForm):
 
     def clean_username(self):
         username = self.cleaned_data.get('username')
-        if not username:
+        if len(username)==0:
             raise forms.ValidationError(
-                self.error_messages['username required'],
+                self.error_messages['username_required'],
                 code='username_required'
             )
         return username
     
     def clean_email(self):
         email= self.cleaned_data.get('email')
-        if not email:
+        if  len(email)==0:
             raise forms.ValidationError(
-                self.error_messages['email required'],
+                self.error_messages['email_required'],
                 code='email_required'
             )
+        if '@' not in email:
+            raise forms.ValidationError('That is not a valid email address ',code='email-invalid')
+
+        if CustomUser.objects.filter(email=email).exists():
+            raise forms.ValidationError('User with the email exists',code='user exists')
         return email
     
     def clean_phone_number(self):
         phone_number = self.cleaned_data.get('phone_number')
-        if not phone_number:
+        if len(phone_number)==0:
             raise forms.ValidationError(
-                self.error_messages['phone required'],
+                self.error_messages['phone_required'],
                 code='phone_required'
             )
+        if CustomUser.objects.filter(phone_number=phone_number).exists():
+            raise forms.ValidationError('A user with similiar phone number exists')
         return phone_number
     
 
     def clean_password(self):
         password = self.cleaned_data.get('password')
-        if not password:
+        if len(password)<5:
             raise forms.ValidationError(
-                self.error_messages['password required'],
-                code='password_required'
+                self.error_messages['password_required'],
+                code='password_to_short'
             )
         return password
 
@@ -86,7 +93,7 @@ class PRegForm(forms.ModelForm):
         'password_mismatch': ("The two password fields didn't match."),
         'username_required': ("User name is a required field."),
           'phone_required':("Phone number is required"),
-        'password_required':("Password field is required"),
+        'password_required':("Pasword must contain atleast 5 characters"),
         'email_required':("email is required")
     }
     password1 = forms.CharField(label=("Password"),
@@ -109,38 +116,47 @@ class PRegForm(forms.ModelForm):
 
     def clean_username(self):
         username = self.cleaned_data.get('username')
-        if not username:
+        if len(username)==0:
             raise forms.ValidationError(
-                self.error_messages['username required'],
+                self.error_messages['username_required'],
                 code='username_required'
             )
         return username
     
-    def clean_phone_number(self):
-        phone_number = self.cleaned_data.get('phone_number')
-        if not phone_number:
-            raise forms.ValidationError(
-                self.error_messages['phone required'],
-                code='phone_required'
-            )
-        return phone_number
-    
     def clean_email(self):
         email= self.cleaned_data.get('email')
-        if not email:
+        if  len(email)==0:
             raise forms.ValidationError(
-                self.error_messages['email required'],
+                self.error_messages['email_required'],
                 code='email_required'
             )
+        if '@' not in email:
+            raise forms.ValidationError('That is not a valid email address ',code='email-invalid')
+
+        if CustomUser.objects.filter(email=email).exists():
+            raise forms.ValidationError('User with the email exists',code='user exists')
         return email
+    
+    def clean_phone_number(self):
+        phone_number = self.cleaned_data.get('phone_number')
+        if len(phone_number)==0:
+            raise forms.ValidationError(
+                self.error_messages['phone_required'],
+                code='phone_required'
+            )
+        if CustomUser.objects.filter(phone_number=phone_number).exists():
+            raise forms.ValidationError('A user with similiar phone number exists')
+        return phone_number
     
 
     def clean_password(self):
         password = self.cleaned_data.get('password')
-        if not password:
+        
+        if len(password)<5:
+            
             raise forms.ValidationError(
-                self.error_messages['password required'],
-                code='password_required'
+                self.error_messages['password_required'],
+                code='password_to_short'
             )
         return password
 
@@ -175,7 +191,30 @@ class SignForm(forms.Form):
         ),
         "inactive": _("This account is inactive."),
     }
+    
+    def clean_email(self):
+        email= self.cleaned_data.get('email')
+        if  len(email)==0:
+            raise forms.ValidationError(
+                self.error_messages['email_required'],
+                code='email_required'
+            )
+        if '@' not in email:
+            raise forms.ValidationError('That is not a valid email address ',code='email-invalid')
 
+        
+        return email
+    
+    def clean_password(self):
+        password = self.cleaned_data.get('password')
+        
+        if len(password)==0:
+           
+            raise forms.ValidationError(
+            'Password field is empty ',
+                code='password_to_short'
+            )
+        return password
 
     # def __init__(self, request=None, *args, **kwargs):
     #     """

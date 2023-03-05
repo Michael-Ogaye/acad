@@ -37,7 +37,10 @@
                                 {% render_field form.email class="form-control inp " placeholder="i.e benomolo@gmail.com"   name="email" id="id_email" %}
                                </fieldset>
 
-                               <p class="warn">This field is required and must be an email</p>
+                               
+                               {% if form.email.errors %}
+                               <div class="div_warn" ><p style="color: red; " class="warn">{{ form.email.errors }}</p></div>
+                             {% endif %}
                               </div>
                            
                                
@@ -51,9 +54,12 @@
                                     
                                 
                                  
-                                {% render_field form.password type="text" class="form-control inp " id="id_password" placeholder="*****"   name="password" %}
+                                {% render_field form.password type="password" class="form-control inp " id="id_password" placeholder="*****"   name="password" %}
                                 </fieldset>
-                                <p class="warn">This field is required </p>
+                                
+                               {% if form.password.errors %}
+                               <div class="div_warn" ><p style="color: red; " class="warn">{{ form.password.errors }}</p></div>
+                             {% endif %}
                               </div>
 
 
@@ -62,8 +68,8 @@
                               
    
                             
-                            <input type="submit" class="btn bt" id="sign_btn">Login </input>
-                            {{form.errors}}
+                            <input type="submit" class="btn bt" id="sign_btn"></input>
+                            
                         </form>
                         Forgotten password? <a href="{% url 'password_reset'%}">Reset Password</a></small>
                     </div>

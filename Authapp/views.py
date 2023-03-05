@@ -39,8 +39,9 @@ def stureg(request):
           return redirect('login')
        
        else:
-          messages.error(request,'Your form is invalid, phone number or email already exists')
-          return HttpResponse('student with the same details exists')
+          form=SRegForm(request.POST)
+          
+          return render(request,'Authapp/registration/studsignup.html',{'form':form})
 
     else:
        form=SRegForm()
@@ -63,7 +64,8 @@ def preg(request):
           return redirect('login')
        else:
           
-          form=SRegForm()
+          form=SRegForm(request.POST)
+          print(form.errors)
           return render(request,'Authapp/registration/profsignup.html',{'form':form})
 
     else:

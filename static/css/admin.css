@@ -1,0 +1,54 @@
+#header{
+    height: 50px;
+    background: linear-gradient(90deg, rgba(85,0,227,1) 0%, rgba(198,61,255,1) 100%);
+    color:white;
+  }
+  #header a:link, #header a:visited {
+      color: #33571f;
+  }
+  #branding h1{
+    color: white;
+    font-weight: 900;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+
+
+  h1{
+    color: White;
+  }
+  .module h2, .module caption, .inline-group h2{
+    background: linear-gradient(90deg, rgba(85,0,227,1) 0%, rgba(198,61,255,1) 100%);
+    color: white;
+    height: 40px;
+  }
+  a.section:link{
+    color: #000;
+  }
+  a:link{
+    color: #000;
+  }
+
+
+  .button, input[type=submit], input[type=button], .submit-row input, a.button {
+    background: #10287e;
+    color: #fff;
+    border-radius: 14px;
+  }
+  .button:hover, input[type=submit]:hover, input[type=button]:hover, input[type=button]:hover, .submit-row input:hover, a.button:hover{
+    background: #4b3a9c;
+    color: white;
+  }
+  .button.default, input[type=submit].default, .submit-row input.default{
+    background: #453491;
+    color: white;
+  }
+  .button.default:hover, input[type=submit].default:hover, .submit-row input.default:hover{
+    background: #10287e;
+    color: #fff;
+  }
+  div.breadcrumbs{
+    background-color: #4b3a9c;
+  }
+  .form-row input{
+    border: 1px solid purple;
+  }

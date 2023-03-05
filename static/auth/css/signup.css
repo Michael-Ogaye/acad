@@ -13,6 +13,41 @@
     margin-top: .5em;
     margin: 0 auto;
     border: none;
+    background-color: transparent;
+    color: black;
+}
+.inp::placeholder{
+    color:purple;
+}
+
+form h2{
+    color: grey;
+    position: relative;
+
+}
+
+form h2::after{
+    content: '';
+    position: absolute;
+     left: 50%;
+     bottom: -75%;
+     height: 3vh;
+     width: 3vh;
+     clip-path: circle();
+     background-color: #838de8;
+     border: 1px solid red;
+}
+
+form h2::after::after{
+    content: '';
+    position: absolute;
+     left: 0%;
+     bottom: -75%;
+     height: 1vh;
+     width: 30%;
+     clip-path: circle();
+     background-color: #838de8;
+     border: 1px solid red;
 }
 
 .card-body{
@@ -103,3 +138,21 @@ form.auth h2{
     border: 1px solid purple;
     
 }
+.div-warn{
+    color: red;
+}
+.warn{
+
+}
+
+.errorlist{
+    color: red;
+    list-style: none;
+    margin: 0 auto;
+    text-align: center;
+}
+
+
+.error input, .error select {
+    border: 2px red solid;
+    }
