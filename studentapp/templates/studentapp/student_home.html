@@ -49,8 +49,8 @@
                     <ul class="nav">
                       <li class="scroll-to-section"><a href="{% url 'hm' %}" class="active">Home</a></li>
 
-                      <li class="has-sub" style="color: red;">
-                          <a style="color: red;" href="javascript:void(0)">Tasks</a>
+                      <li class="has-sub" >
+                          <a  href="javascript:void(0)">Tasks</a>
                           <ul class="sub-menu">
                               <li><a href="#">Upload Tasks</a></li>
                               <li><a href="#">Check Tasks</a></li>
@@ -62,7 +62,7 @@
                       <li class="has-sub">
                         <a href="javascript:void(0)">Accounts</a>
                         <ul class="sub-menu">
-                            <li><a href="#">Logout</a></li>
+                            <li><a href="{% url 'logout' %}">Logout</a></li>
                             <li><a href="#">Profile</a></li>
                             <li><a href="#">Update profile</a></li>
                         </ul>
