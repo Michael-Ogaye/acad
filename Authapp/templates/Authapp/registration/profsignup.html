@@ -1,5 +1,4 @@
 
-
 {% extends 'base.html' %}
 {% load static %}
 {% load widget_tweaks %}
@@ -11,7 +10,70 @@
 {% block content %}
 
 
-            <div class="card bg-dark" >
+
+<style>
+  .ilusion{
+    position: relative;
+    top: 0;
+    left:0;
+    width: 100%;
+    height: 100%;
+
+  }
+  /* .ilusion::after{
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 100%;
+ background-color: green;
+
+  } */ */
+
+  #outer{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    display: none;
+    
+    
+  }
+  .spinner {
+  width: 16vw;
+  height: 16vw;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: #aba9b6;
+  
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  
+  
+  animation: spin 3s ease-in-out infinite reverse;
+  display: none;
+}
+
+@keyframes spin {
+  0% { transform: rotateZ(0deg); }
+  50% { transform: rotateZ(180deg); border-color: #c6c5ce; }
+  100% { transform: rotateZ(360deg); border-color: #16053b; }
+}
+
+</style>
+
+<div id="outer" >
+  <div class="spinner " id="spn">
+
+  </div>
+  
+</div>
+
+
+            <div class="card bg-dark ilusion" id="il" >
                 <div class="card-body">
                     
                     <div class="card-text">
@@ -24,7 +86,7 @@
                                <fieldset>
                                 <legend>Email</legend>
                                  
-                                {% render_field form.email class="form-control inp " placeholder="i.e benomolo@gmail.com" type="text " required="true" name="email" id="email" %}
+                                {% render_field form.email class="form-control inp " placeholder="e.g info@fealas.com" type="text " required="true" name="email" id="email" %}
                                </fieldset>
 
                                {% if form.email.errors %}
@@ -37,7 +99,7 @@
                                     <legend>
                                         Phone Number
                                     </legend>
-                                    {% render_field form.phone_number type="text" class="form-control inp " placeholder="i.e 254707957701" id="phone" name="phone_number" %}
+                                    {% render_field form.phone_number type="text" class="form-control inp " placeholder="e.g +1-5679885432" id="phone" name="phone_number" %}
                                 </fieldset>
                                 {% if form.phone_number.errors %}
                                 <div class="div_warn" style="margin: 0 auto; color: red;" > <p style="color: red; list-style: none;" class="warn">{{ form.phone_number.errors }}</p></div>
@@ -93,10 +155,39 @@
                             
                             <button type="submit" class="btn bt" id="sign_btn">Register </button>
                             
-                        </form>Already registered <a href="{% url 'login'%}">Login</a></small>
+                        </form>
+                        <div style="margin: 5px auto ; text-align: center;">
+                          <button style="border: none; background-color: transparent;"> Already registered? <a id="redirect" target="_blank" rel="noopener noreferrer">Login</a></button>
+                        </div>
                     </div>
                 </div>
             </div>
+
+
+            <script>
+
+
+const button = document.getElementById("redirect");
+const spinner = document.getElementById("spn");
+const ilusion = document.getElementById("il");
+
+button.addEventListener("click", function() {
+  // Show the spinner
+  spinner.style.display = "block";
+  ilusion.style.opacity='0.1'
+  // Disable the button to prevent multiple clicks
+  button.disabled = true;
+
+  // Redirect the user to the new page after a short delay
+  setTimeout(function() {
+    window.location.href = "{% url 'login' %}";
+
+    spinner.style.display = "none";
+  ilusion.style.opacity='1'
+  }, 1000);
+});
+
+            </script>
 
         
 

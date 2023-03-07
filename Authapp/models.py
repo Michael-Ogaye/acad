@@ -51,14 +51,16 @@ class CustomUser(AbstractBaseUser,PermissionsMixin):
         STUDENT = "STUDENT" , "student"
         PROFESSOR = "PROFESSOR" , "professor"
         C_ADMIN='C_ADMIN','c_admin'
+    
+    # r'^\+?1?\d{9,15}$'
 
-     phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$',
-                                 message="Phone number must be entered in the format: '+9'. Up to 15 digits allowed.")     
+     phone_regex = RegexValidator(regex=r'^\+?\d{1,3}-\d{6,15}$',
+                                 message="Phone number must be entered in the format: '+1-578954324'. Up to 15 digits allowed.")     
      type = models.CharField(max_length = 40 , choices = Types.choices , 
                             # Default is user is teacher
                             default = Types.C_ADMIN)
      email = models.EmailField(max_length = 200 , unique = True)
-     phone_number=models.CharField(max_length=65,unique=True)
+     phone_number=models.CharField(max_length=65,unique=True,validators=[phone_regex])
      username=models.CharField(max_length=30,null=True)
      password=models.CharField(max_length=100)
      date_joined=models.DateTimeField(auto_now_add=True,max_length=100)

@@ -65,6 +65,9 @@ class SRegForm(forms.ModelForm):
                 self.error_messages['phone_required'],
                 code='phone_required'
             )
+        
+        if len(phone_number)<5:
+            raise forms.ValidationError('Phone number must be in format +[number]-[more than 6 numbers less than 15 numbers ]')
         if CustomUser.objects.filter(phone_number=phone_number).exists():
             raise forms.ValidationError('A user with similiar phone number exists')
         return phone_number
@@ -144,9 +147,13 @@ class PRegForm(forms.ModelForm):
                 self.error_messages['phone_required'],
                 code='phone_required'
             )
+        if len(phone_number)<5:
+            raise forms.ValidationError('Phone number must be in format +[number]-[more than 6 numbers less than 15 numbers ]')
         if CustomUser.objects.filter(phone_number=phone_number).exists():
             raise forms.ValidationError('A user with similiar phone number exists')
         return phone_number
+        
+        
     
 
     def clean_password(self):

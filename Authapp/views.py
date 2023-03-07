@@ -90,7 +90,7 @@ def signin(request):
          if user is not None and user.is_active:
             login(request,user)
             if user.is_student:
-               return HttpResponse('you will be directed to studentapp')
+               return redirect('stud_home')
             elif user.is_professor:
                return HttpResponse('you will be directed to the professors page shortly')
             else:

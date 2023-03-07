@@ -9,6 +9,18 @@
 
 {% block content %}
 
+<style>
+    .bot{
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .regs{
+        display: flex;
+        justify-content: space-around;
+    }
+</style>
+
 
             <div class="card bg-dark" >
                 <div class="card-body">
@@ -71,7 +83,23 @@
                             <input type="submit" class="btn bt" id="sign_btn"></input>
                             
                         </form>
-                        Forgotten password? <a href="{% url 'password_reset'%}">Reset Password</a></small>
+                        <div class="bot">
+                            <div class="reset">
+                                Forgotten password? <a href="{% url 'password_reset'%}">Reset Password</a></small>
+                            </div>
+
+                            <div class="regs">
+                                <div class="reg">
+                                    Join?
+                                    <a href="{% url 'stud'%}">Student |</a>
+                                    <a href="{% url 'proreg'%}">Professor </a>
+                                </div>
+
+                                
+                            </div>
+
+                        </div>
+                        
                     </div>
                 </div>
             </div>

@@ -2,9 +2,34 @@
 {% load static %}
 {% load widget_tweaks %}
 {% block style %}
-<link rel="stylesheet" href="{% static 'foreign/css/home.css'%}">
 
+<link rel="stylesheet" href="{% static 'foreign/css/fontawesome.css'%}">
+<link rel="stylesheet" href="{% static 'foreign/css/home.css'%}">
+<link rel="stylesheet" href="{% static 'foreign/css/owl.css'%}">
+<link rel="stylesheet" href="{% static 'foreign/css/animate.css'%}">
+<link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+<link rel="stylesheet" href="{% static 'foreign/css/join.css'%}">
 {% endblock %}
+
+
+
+{% block content %}
+
+<style>
+    ul.nav{
+        display : flex;
+    }
+    .has-sub{
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .logo{
+        margin-left: 2em;
+    }
+
+</style>
+
 
 <header class="header-area header-sticky">
     <div class="container">
@@ -24,8 +49,8 @@
                     <ul class="nav">
                       <li class="scroll-to-section"><a href="{% url 'hm' %}" class="active">Home</a></li>
 
-                      <li class="has-sub">
-                          <a href="javascript:void(0)">Tasks</a>
+                      <li class="has-sub" style="color: red;">
+                          <a style="color: red;" href="javascript:void(0)">Tasks</a>
                           <ul class="sub-menu">
                               <li><a href="#">Upload Tasks</a></li>
                               <li><a href="#">Check Tasks</a></li>
@@ -56,7 +81,9 @@
   </header>
 
 
-{% block content %}
+
+
+  
 
 
             
@@ -66,6 +93,14 @@
 {% endblock %}
 
 {% block script %}
+<script src="{% static 'foreign/js/jquery.min.js'%}"></script>
+  <script src="{% static 'foreign/js/bootstrap.min.js'%}"></script>
+
+  <script src="{% static 'foreign/js/isotope.min.js'%}"></script>
+  <script src="{% static 'foreign/js/owl-carousel.js'%}"></script>
+  <script src="{% static 'foreign/js/tabs.js'%}"></script>
+  <script src="{% static 'foreign/js/popup.js'%}"></script>
+  <script src="{% static 'foreign/js/custom.js'%}"></script>
 
 {% endblock%}
 
