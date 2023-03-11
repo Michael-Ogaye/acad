@@ -57,7 +57,7 @@ class TaskCategory(models.Model):
 class Task(models.Model):
     name=models.CharField(max_length=30)
     description=models.TextField()
-    # files=models.FieldFile(upload_to='myfiles', blank=True,null=True)
+    files=CloudinaryField('task_files', blank=True,null=True,resource_type='auto')
     task_url=models.URLField(blank=True,null=True)
     deadline_date = models.DateTimeField('Task Deadline Date')
     created_at = models.DateTimeField(auto_now_add=True)

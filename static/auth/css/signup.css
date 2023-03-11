@@ -1,3 +1,9 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
 .lebal{
     color: #838de8;
     display: block;
@@ -16,34 +22,27 @@
     background-color: transparent;
     color: black;
 }
+.inp:focus{
+    background-color: transparent;
+    outline: none;
+}
 .inp::placeholder{
-    color:purple;
+    color:rgb(22, 18, 64);
+    font-weight: bold;
 }
 
 form h2{
     color: grey;
     position: relative;
 
-}
-/* 
-form h2::after{
-    content: '';
-    position: absolute;
-     left: 50%;
-     bottom: -75%;
-     height: 3vh;
-     width: 3vh;
-     clip-path: circle();
-     background-color: #838de8;
-     border: 1px solid red;
-} */
+} 
 
 
 
 .card-body{
     width: 50%;
     margin: 0 auto;
-    margin-top: 20vh;
+    /* margin-top: 20vh; */
 
 }
 .card-text{
@@ -54,8 +53,8 @@ form h2::after{
 form.auth{
     margin: 0 auto;
     border: none;
-    padding: 1em 1em;
-    width: 100%;
+    padding: 0.5em 0.4em;
+    width: 80%;
     
    
     border-radius: 2em;
@@ -105,7 +104,7 @@ form.auth h2{
     background-color: rgba(39, 11, 96, 0.5);
 
     color: white;
-    width: 70%;
+    width: 50%;
     margin: 0 auto;
     margin-top: .4em;
     margin-bottom: .3em;
@@ -121,11 +120,12 @@ form.auth h2{
 
 .fm fieldset{
     margin: 0 auto;
-    width: 70%;
+    width: 80%;
     margin-top: 2vh;
     margin-bottom: 2vh;
     border-radius: .5em;
-    border: 1px solid purple;
+    border: 1px solid white;
+    background-color: transparent;
     
 }
 .div-warn{
@@ -135,6 +135,12 @@ form.auth h2{
 
 }
 
+.al{
+    background-image: url('../../solid/css/images/bg01.jpg');
+    background-position: top;
+    
+}
+
 .errorlist{
     color: red;
     list-style: none;
@@ -142,6 +148,10 @@ form.auth h2{
     text-align: center;
 }
 
+legend{
+    text-transform: capitalize;
+    color: white;
+}
 
 .error input, .error select {
     border: 2px red solid;

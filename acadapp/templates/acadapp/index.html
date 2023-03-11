@@ -15,7 +15,8 @@
 <link rel="stylesheet" href="{% static 'foreign/css/animate.css'%}">
 <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
 <link rel="stylesheet" href="{% static 'foreign/css/join.css'%}">
-
+<link rel="stylesheet" href="{% static 'solid/css/main.css'%}" />
+		<noscript><link rel="stylesheet" href="{% static 'solid/css/nonscript.css'%}" /></noscript>
 
 
 {% endblock %}
@@ -105,450 +106,417 @@
   </header>
   <!-- ***** Header Area End ***** -->
 
-  <div class="main-banner" id="top">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-7">
-          <div class="caption header-text">
-            <h6>FEALAS</h6>
-            <div class="line-dec"></div>
-            <h4>Join <em>academic writing</em> Journey With Fealas</h4>
-            <p> We provide an efficient academic writing platform, relived with tools and the best expertise in the market <a href="index.html">Home</a>, <a href="about.html">About</a>, and <a href="faqs.html">FAQ</a>.</p>
-            <div class="main-button scroll-to-section"><a href="#services"> Learn More</a></div>
-            <span>or</span>
-            <div class="second-button"><a href="#">Check our FAQs</a></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <div class="hol">
 
-  <div class="join" id="jd">
-    <h6>Join us today</h6>
-
-   <div class="mr" >
-    <a href="{% url 'stud' %}">As student</a>
-    <a href="{% url 'proreg'%}">As professor</a>
-   </div>
-
-  </div>
-
-  <div class="services section" id="services">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 offset-lg-6">
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="section-heading">
-                <h2>Our <em> Services</em> 
-                  <span></span></h2>
-                  <div class="line-dec"></div>
-                  <p>We connect you to the real academic talents.</p>
-              </div>
-            </div>
-            <div class="col-lg-6 col-sm-6">
-              <div class="service-item">
-                <div class="icon">
-                  <img src="{% static 'foreign/assets/images/services-01.jpg'%}" alt="discover SEO" class="templatemo-feature">
-                </div>
-                <h4>Learn more on academic writing tools that we provide</h4>
-              </div>
-            </div>
-            <div class="col-lg-6 col-sm-6">
-              <div class="service-item">
-                <div class="icon">
-                  <img src="{% static 'foreign/assets/images/services-02.jpg'%}" alt="data analysis" class="templatemo-feature">
-                </div>
-                <h4>Academic writing marketplace</h4>
-              </div>
-            </div>
-            <div class="col-lg-6 col-sm-6">
-              <div class="service-item">
-                <div class="icon">
-                  <img src="{% static 'foreign/assets/images/services-03.jpg'%}" alt="precise data" class="templatemo-feature">
-                </div>
-                <h4>Precise talent matching &amp; bidding </h4>
-              </div>
-            </div>
-            <div class="col-lg-6 col-sm-6">
-              <div class="service-item">
-                <div class="icon">
-                  <img src="{% static 'foreign/assets/images/services-03.jpg'%}" alt="SEO marketing" class="templatemo-feature">
-                </div>
-                <h4>Plagiriasm&amp; Grammar check</h4>
-              </div>
+    <div class="main-banner" id="top">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7">
+            <div class="caption header-text">
+              <h6>FEALAS</h6>
+              <div class="line-dec"></div>
+              <h4 style="color: white;">Join <em>academic writing</em> Journey With Fealas</h4>
+              <p> We provide an efficient academic writing platform, relived with tools and the best expertise in the market <a href="index.html">Home</a>, <a href="about.html">About</a>, and <a href="faqs.html">FAQ</a>.</p>
+              <div class="main-button scroll-to-section"><a href="{% url 'stud' %}"> Register as student</a></div>
+              <span>or</span>
+              <div class="second-button"><a href="{% url 'proreg' %}">Register as professor</a></div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
 
-  <Style>
-    [data-component="slideshow"] .slide {
-       display: none;
-     }
-   
-     [data-component="slideshow"] .slide.active {
-       display: block;
-     }
-     
-   
-   #slideshow-example{
-     width: 69%;
-     margin: 0 auto;
-     background:linear-gradient(90deg, rgba(85,0,227,0.8) 0%, rgba(198,61,255,0.9) 100%); ;
-     margin-top: 2em;
-     margin-bottom: 2em;
-     color: rgba(20, 20, 255, 0.1);
-     padding: 1em 1em;
-   }
-   
-   #slideshow-example img{
-     display: block;
-     width: 40%;
-     
-   }
-
-   #slideshow-example small{
-    color: purple;
-   }
-
-   .item{
-    background: rgba(20, 20, 255, 0.1);
-   }
-
-   .down-content{
-    background-color: rgba(47, 143, 117, 0.1);
-
-   }
-
-   
-     </Style>
-   
-
-
-
-
-
-
-
-
-
-  <div class="projects section" id="projects">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6">
-          <div class="section-heading">
-            <h2> Our <em>Experience</em>  <span></span></h2>
-            <div class="line-dec"></div>
-            <p>What do our clients say.</p>
-          </div>
-        </div>
-      </div> 
-    </div>
-
-
-
-
-
-    <div id="slideshow-example" data-component="slideshow">
-      <div role="list">
-        <div class="slide">
-          <div class="item">
-            <img src="{% static 'foreign/assets/images/rem.jpeg'%}" alt="">
-            <div class="down-content">
-              <h4>Michael</h4>
-              <small>
-                  i got one of the best experiences working with feasal professors to do my tasks.
-              </small>
-              <a style="background-color: rgba(20, 20, 255, 0.1);" href="#"><i class="fa fa-link"></i></a>
-            </div>
-          </div>
-        </div>
+  <div class="hol">
   
-        <div class="slide">
-          <div class="item">
-            <img src="{% static 'foreign/assets/images/proff-2.jpeg'%}" alt="">
-            <div class="down-content">
-              <h4>Malia</h4>
-              <small>
-                  Everything was done in a couple of days, when i want my assignments done on time, this is the platform
-              </small>
-              <a style="background-color: rgba(20, 20, 255, 0.1);" href="#"><i class="fa fa-link" ></i></a>
-            </div>
-          </div>
-        </div>
+    
   
-        
-      </div>
-    </div>
-  
-    <!-- <div class="container-fluid">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="owl-features owl-carousel">
-            <div class="item">
-              <img src="{% static 'foreign/assets/images/rem.jpeg'%}" alt="">
-              <div class="down-content">
-                <h4>Michael</h4>
-                <small>
-                    i got one of the best experiences working with benbrand professors to do my tasks.
-                </small>
-                <a style="background-color: rgba(20, 20, 255, 0.1);" href="#"><i class="fa fa-link"></i></a>
+    <!-- <div class="services section" id="services">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 offset-lg-6">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="section-heading">
+                  <h2>Our <em> Services</em> 
+                    <span></span></h2>
+                    <div class="line-dec"></div>
+                    <p>We connect you to the real academic talents.</p>
+                </div>
+              </div>
+              <div class="col-lg-6 col-sm-6">
+                <div class="service-item">
+                  <div class="icon">
+                    <img src="{% static 'foreign/assets/images/services-01.jpg'%}" alt="discover SEO" class="templatemo-feature">
+                  </div>
+                  <h4>Learn more on academic writing tools that we provide</h4>
+                </div>
+              </div>
+              <div class="col-lg-6 col-sm-6">
+                <div class="service-item">
+                  <div class="icon">
+                    <img src="{% static 'foreign/assets/images/services-02.jpg'%}" alt="data analysis" class="templatemo-feature">
+                  </div>
+                  <h4>Academic writing marketplace</h4>
+                </div>
+              </div>
+              <div class="col-lg-6 col-sm-6">
+                <div class="service-item">
+                  <div class="icon">
+                    <img src="{% static 'foreign/assets/images/services-03.jpg'%}" alt="precise data" class="templatemo-feature">
+                  </div>
+                  <h4>Precise talent matching &amp; bidding </h4>
+                </div>
+              </div>
+              <div class="col-lg-6 col-sm-6">
+                <div class="service-item">
+                  <div class="icon">
+                    <img src="{% static 'foreign/assets/images/services-03.jpg'%}" alt="SEO marketing" class="templatemo-feature">
+                  </div>
+                  <h4>Plagiriasm&amp; Grammar check</h4>
+                </div>
               </div>
             </div>
-
-            <div class="item">
-              <img src="{% static 'foreign/assets/images/proff-2.jpeg'%}" alt="">
-              <div class="down-content">
-                <h4>Malia</h4>
-                <small>
-                    Everything was done in a couple of days, when i want my assignments done on time, this is the platform
-                </small>
-                <a style="background-color: rgba(20, 20, 255, 0.1);" href="#"><i class="fa fa-link" ></i></a>
-              </div>
-            </div>
-           
-            
-          
-
           </div>
         </div>
       </div>
     </div> -->
-  </div>
-
-
   
-
-
-
-
   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <div class="infos section" id="infos">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="main-content">
-            <div class="row">
-              <div class="col-lg-6">
-                <div class="left-image">
-                  <img src="{% static 'foreign/assets/images/left-infos.jpg'%}" alt="lft">
-                </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="section-heading">
-                  <h2>More <em>About Us</em> &amp; What <span>We Offer</span></h2>
-                  <div class="line-dec"></div>
-                  <p>This is an academic writing marketplace that provides  a high rated academic writing expertise and tools to both students and professors</p>
-                </div>
-
-               
-
-                <p class="more-info">We are happy to be part of your learning eperience.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="contact-us section" id="contact">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="contact-us-content">
-            <div class="row">
-              <div class="col-lg-4">
-<!-- map -->
-                <div id="map">
-                  <div style="width: 700px;position: relative;"><iframe width="350" height="670" src="https://maps.google.com/maps?width=700&amp;height=440&amp;hl=en&amp;q=chicago%2CUS+(Title)&amp;ie=UTF8&amp;t=&amp;z=11&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><div style="position: absolute;width: 80%;bottom: 10px;left: 0;right: 0;margin-left: auto;margin-right: auto;color: #000;text-align: center;"><small style="line-height: 1.8;font-size: 2px;background: #fff;">Powered by <a href="http://www.googlemapsgenerator.com/en/">gmapgen en</a> & <a href="https://nouc.se/">https://nouc.se/</a></small></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><br />
-                </div>
-
-              </div>
-              <div class="col-lg-8">
-
-                <!-- contact form -->
-                {% if messages %}
-                {% for message in messages %}
-                  <div class="toast alert alert">
-                    <p>
-                        {{message}}
-                    </p>
-                  </div>
-                {% endfor %}
-                {% endif %}
-
-                <form id="contact-form" action="" method="post">
-                    
-
-                    <div style="display: none" class="col-lg-6" >
-                      <fieldset>
-                        <input  name="csrfmiddlewaretoken"  value="{{csrf_token}}">
-                      </fieldset>
-                    </div>
-
-                  <div class="row">
-                    <div class="col-lg-12">
-                      <div class="section-heading">
-                        <h2><em>Contact Us</em>  <span></span></h2>
-                      </div>
-                    </div>
-
-
-                    
-                    
-
-                    <div class="col-lg-6">
-                      <fieldset>
-                        <input type="name" name="name" id="name" placeholder="Your Name..." autocomplete="on" required>
-                      </fieldset>
-                    </div>
-
-                    <div class="col-lg-6">
-                      <fieldset>
-                        <input type="surname" name="surname" id="surname" placeholder="Your Surname..." autocomplete="on" required>
-                      </fieldset>
-                    </div>
-                    <div class="col-lg-6">
-                      <fieldset>
-                        <input type="text" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your E-mail..." required="">
-                      </fieldset>
-                    </div>
-                    <div class="col-lg-6">
-                      <fieldset>
-                        <input type="subject" name="subject" id="subject" placeholder="Subject..." autocomplete="on" >
-                      </fieldset>
-                    </div>
-                    <div class="col-lg-12">
-                      <fieldset>
-                        <textarea name="message" id="message" placeholder="Your Message"></textarea>
-                      </fieldset>
-                    </div>
-                    <div class="col-lg-12">
-                      <fieldset>
-                        <button type="submit" id="form-submit" class="orange-button">Send Message Now</button>
-                      </fieldset>
-                    </div>
-                  </div>
-                </form>
-                <div class="more-info">
-                  <div class="row">
-                   
-                    <div class="col-lg-4">
-                      <div class="info-item">
-                        <i class="fa fa-envelope"></i>
-                        <h4><a href="#">info@fealas.com</a></h4>
-                        
-                      </div>
-                    </div>
-                    <div class="col-lg-4">
-                      <div class="info-item">
-                        <i class="fa fa-map-marker"></i>
-                        <h4><a href="#">Chicago,US</a></h4>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <footer>
-    <div class="container">
-      <div class="col-lg-12">
-        <p><span id="dat"></span> <a href="#">Fealas</a>. All rights reserved. 
-        
-        <br>Design: <a href="#" target="_blank">Benard</a></p>
-      </div>
-    </div>
-  </footer>
-
-
-
-{% endblock %}
-
-
-{% block script %}
-<script>
-let sp=document.getElementById('dat')
- let dt=new Date().getFullYear()
- sp.innerHTML=`Copyright © ${dt.toString()} `
-
-
- let jd=document.getElementById('jd')
- let observer=new IntersectionObserver((ob)=>{
-  ob.forEach((b)=>{
-    if (b.isIntersecting){
-      b.target.classList.toggle('appear')
-    }
-  })
- })
- observer.observe(jd)
-
-
-
-
- var slideshows = document.querySelectorAll('[data-component="slideshow"]');
+    <Style>
+      [data-component="slideshow"] .slide {
+         display: none;
+       }
+     
+       [data-component="slideshow"] .slide.active {
+         display: block;
+       }
+       
+     
+     #slideshow-example{
+       width: 69%;
+       margin: 0 auto;
+       /* background:linear-gradient(90deg, rgba(85,0,227,0.8) 0%, rgba(198,61,255,0.9) 100%); ; */
+       background-color: white;
+       margin-top: 2em;
+       margin-bottom: 2em;
+       /* color: rgba(20, 20, 255, 0.1); */
+       color: white;
+       padding: 1em 1em;
+     }
+     
+     #slideshow-example img{
+       display: block;
+       width: 40%;
+       
+     }
   
-  // Apply to all slideshows that you define with the markup wrote
-  slideshows.forEach(initSlideShow);
-
-  function initSlideShow(slideshow) {
-
-    var slides = document.querySelectorAll(`#${slideshow.id} [role="list"] .slide`); // Get an array of slides
-
-    var index = 0, time = 5000;
-    slides[index].classList.add('active');  
+     #slideshow-example small{
+      color: white;
+     }
+  
+     .item{
+      background: rgba(20, 20, 255, 0.1);
+     }
+  
+     .down-content{
+      background-color: rgba(47, 143, 117, 0.1);
+  
+     }
+     
+     /* .hola{
+      background-image: url("{% static 'all/images/bg03.jpg' %}");
+     }
+      */
+       </Style>
+     
+  
+  
+  
+  
+  
+  
+  
+  
+  
     
-    setInterval( () => {
-      slides[index].classList.remove('active');
+
+
+    <section id="three" class="wrapper spotlight style3">
+      <div class="inner">
+        <!-- <a href="#" class="image"><img src="images/pic03.jpg" alt="" /></a> 
+        -->
+        <!-- <div class="join" id="j" style="color: white; background-color: white;">
+          <h6>Join us today</h6>
       
-      //Go over each slide incrementing the index
-      index++;
+         <div class="mr" style="color: white; background-color: white;" >
+          <a href="{% url 'stud' %}">As student</a>
+          <a href="{% url 'proreg'%}">As professor</a>
+         </div>
       
-      // If you go over all slides, restart the index to show the first slide and start again
-      if (index === slides.length) index = 0; 
+        </div> -->
+
+       
+
+
+
+        <div class="content">
+          <h2 class="major">Reviews</h2>
+          <!-- <p>Lorem ipsum dolor sit amet, etiam lorem adipiscing elit. Cras turpis ante, nullam sit amet turpis non, sollicitudin posuere urna. Mauris id tellus arcu. Nunc vehicula id nulla dignissim dapibus. Nullam ultrices, neque et faucibus viverra, ex nulla cursus.</p> -->
+          <div class="projects section" id="projects">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="section-heading">
+                    <h2> Our <em>Experience</em>  <span></span></h2>
+                    <div class="line-dec"></div>
+                    <p>What do our clients say.</p>
+                  </div>
+                </div>
+              </div> 
+            </div>
+        
+        
+        
+        
+        
+            <div id="slideshow-example" data-component="slideshow">
+              <div role="list">
+                <div class="slide">
+                  <div class="item">
+                    <img src="{% static 'foreign/assets/images/rem.jpeg'%}" alt="">
+                    <div class="down-content">
+                      <h4>Michael</h4>
+                      <small>
+                          i got one of the best experiences working with feasal professors to do my tasks.
+                      </small>
+                      <a style="background-color:white;" href="#"><i class="fa fa-link"></i></a>
+                    </div>
+                  </div>
+                </div>
+          
+                <div class="slide">
+                  <div class="item">
+                    <img src="{% static 'foreign/assets/images/proff-2.jpeg'%}" alt="">
+                    <div class="down-content">
+                      <h4>Malia</h4>
+                      <small>
+                          Everything was done in a couple of days, when i want my assignments done on time, this is the platform
+                      </small>
+                      <a style="background-color: rgba(20, 20, 255, 0.1);" href="#"><i class="fa fa-link" ></i></a>
+                    </div>
+                  </div>
+                </div>
+          
+                
+              </div>
+            </div>
+          </div>
+        
+
+          <a href="#" class="special">Learn more</a>
+        </div>
+      </div>
+    </section>
+  
+
+
+    <section id="four" class="wrapper alt style1">
+      <div class="inner">
+        <h2 class="major">Services</h2>
+        <p>We provide  an array of services,that are holistic to your academic needs at comfort.</p>
+        <section class="features">
+          <article>
+            <a href="#" class="image"><img src="{% static 'solid/images/pic04.jpg'%}" alt="" /></a>
+            <h3 class="major">Market place</h3>
+            <p>Through our platform you get a team of highly skilled professors.</p>
+            <a href="#" class="special">Learn more</a>
+          </article>
+          <article>
+            <a href="#" class="image"><img src="{% static 'solid/images/pic05.jpg'%}" alt="" /></a>
+            <h3 class="major">Plagiarism Checks</h3>
+            <p>We have tools that enables you to evaluate your tasks against plagiarism.</p>
+            <a href="#" class="special">Learn more</a>
+          </article>
+          <article>
+            <a href="#" class="image"><img src="{% static 'solid/images/pic06.jpg'%}" alt="" /></a>
+            <h3 class="major">Grammarly Checks</h3>
+            <p>We ensure your work conforms to the language requirements</p>
+            <a href="#" class="special">Learn more</a>
+          </article>
+          <article>
+            <a href="#" class="image"><img src="{% static 'solid/images/pic07.jpg'%}" alt="" /></a>
+            <h3 class="major">General standards</h3>
+            <p>We give your work conformity to the general  standards specified.</p>
+            <a href="#" class="special">Learn more</a>
+          </article>
+        </section>
+        <ul class="actions">
+          <li><a href="#" class="button">Browse All</a></li>
+        </ul>
+      </div>
+    </section>
+
+</section>
+
+  
+    <div class="infos section" id="infos">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="main-content">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="left-image">
+                    <img src="{% static 'foreign/assets/images/left-infos.jpg'%}" alt="lft">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="section-heading">
+                    <h2>More <em>About Us</em>  </h2>
+                    <div class="line-dec"></div>
+                    <p>This is an academic writing marketplace that provides  a high rated academic writing expertise and tools to both students and professors</p>
+                  </div>
+  
+                 
+  
+                  <p class="more-info">We are happy to be part of your learning eperience.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    
+    
+    
+
+
+
+
+    <!-- Footer -->
+    <section id="footer">
+      <div class="inner">
+        <h2 class="major">Get in touch</h2>
+        <p>We value your feedback,you are encouraged to leave reviews and comments to us,our duty is your service.</p>
+        <form method="post" action="">
+          {% csrf_token%}
+          <div class="fields">
+            <div class="field">
+              <label for="name">Name</label>
+              <input type="text" name="name" id="name" />
+            </div>
+            <div class="field">
+              <label for="name">Surname</label>
+              <input type="text" name="surname" id="surname" />
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" name="email" id="email" />
+            </div>
+
+            <div class="field">
+              <label for="name">Subject</label>
+              <input type="text" name="subject" id="subject" />
+            </div>
+            <div class="field">
+              <label for="message">Message</label>
+              <textarea name="message" id="message" rows="4"></textarea>
+            </div>
+          </div>
+          <ul class="actions">
+            <li><input type="submit" value="Send Message" /></li>
+          </ul>
+        </form>
+        <ul class="contact">
+          <li class="icon solid fa-home">
+            Feasal Inc<br />
+            1234 Somewhere Road Suite #2894<br />
+            Chicago, 00000-0000
+          </li>
+          <li class="icon solid fa-phone">(000) 000-0000</li>
+          <li class="icon solid fa-envelope"><a href="#">info@fealas.com</a></li>
+          <li class="icon brands fa-twitter"><a href="#">twitter.com/feasal</a></li>
+          <li class="icon brands fa-facebook-f"><a href="#">facebook.com/feasal</a></li>
+          <li class="icon brands fa-instagram"><a href="#">instagram.com/feasal</a></li>
+        </ul>
+        <ul class="copyright">
+          <li>&copy; Feasal Inc. All rights reserved.</li><li>Design: feasal inc</li>
+        </ul>
+      </div>
+    </section>
+
+</div>
+
+  
+   
+  
+  
+  
+  {% endblock %}
+  
+  
+  {% block script %}
+  <script>
+  let sp=document.getElementById('dat')
+   let dt=new Date().getFullYear()
+   sp.innerHTML=`Copyright © ${dt.toString()} `
+  
+  
+   let jd=document.getElementById('jd')
+   let observer=new IntersectionObserver((ob)=>{
+    ob.forEach((b)=>{
+      if (b.isIntersecting){
+        b.target.classList.toggle('appear')
+      }
+    })
+   })
+   observer.observe(jd)
+  
+  
+  
+  
+   var slideshows = document.querySelectorAll('[data-component="slideshow"]');
+    
+    // Apply to all slideshows that you define with the markup wrote
+    slideshows.forEach(initSlideShow);
+  
+    function initSlideShow(slideshow) {
+  
+      var slides = document.querySelectorAll(`#${slideshow.id} [role="list"] .slide`); // Get an array of slides
+  
+      var index = 0, time = 5000;
+      slides[index].classList.add('active');  
       
-      slides[index].classList.add('active');
+      setInterval( () => {
+        slides[index].classList.remove('active');
+        
+        //Go over each slide incrementing the index
+        index++;
+        
+        // If you go over all slides, restart the index to show the first slide and start again
+        if (index === slides.length) index = 0; 
+        
+        slides[index].classList.add('active');
+  
+      }, time);
+    }
+  
+  </script>
+  
+  <script src="{% static 'foreign/js/jquery.min.js'%}"></script>
+    <script src="{% static 'foreign/js/bootstrap.min.js'%}"></script>
+  
+    <script src="{% static 'foreign/js/isotope.min.js'%}"></script>
+    <script src="{% static 'foreign/js/owl-carousel.js'%}"></script>
+    <script src="{% static 'foreign/js/tabs.js'%}"></script>
+    <script src="{% static 'foreign/js/popup.js'%}"></script>
+    <script src="{% static 'foreign/js/custom.js'%}"></script>
 
-    }, time);
-  }
-
-</script>
-
-<script src="{% static 'foreign/js/jquery.min.js'%}"></script>
-  <script src="{% static 'foreign/js/bootstrap.min.js'%}"></script>
-
-  <script src="{% static 'foreign/js/isotope.min.js'%}"></script>
-  <script src="{% static 'foreign/js/owl-carousel.js'%}"></script>
-  <script src="{% static 'foreign/js/tabs.js'%}"></script>
-  <script src="{% static 'foreign/js/popup.js'%}"></script>
-  <script src="{% static 'foreign/js/custom.js'%}"></script>
-
-
-{% endblock %}
+  </div>
+  
+  
+  {% endblock %}
+  </div>

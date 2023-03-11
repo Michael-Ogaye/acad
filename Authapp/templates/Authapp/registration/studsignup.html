@@ -11,6 +11,7 @@
 
 
 
+
 <style>
   .ilusion{
     position: relative;
@@ -41,40 +42,57 @@
     
   }
   .spinner {
-  width: 20vw;
-  height: 20vw;
+  width: 16vw;
+  height: 16vw;
   border-radius: 50%;
   border: 3px solid transparent;
-  border-top-color: #0c062e;
+  border-top-color: #aba9b6;
+  
   position: absolute;
   top: 50%;
   left: 50%;
-
+  transform: translate(-50%,-50%);
   
   
-  
-  animation: spin 1s ease-in-out infinite reverse;
+  animation: spin 3s ease-in-out infinite reverse;
   display: none;
 }
 
 @keyframes spin {
-  
   0% { transform: rotateZ(0deg); }
-  50% { transform: rotateZ(180deg); border-color: #29267d; }
+  50% { transform: rotateZ(180deg); border-color: #c6c5ce; }
   100% { transform: rotateZ(360deg); border-color: #16053b; }
 }
 
+.back{
+  margin-top: 10vh;
+  margin-left: 6vw;
+  color: white;
+  font-weight: 900;
+}
+
+.back button{
+  background-color: purple;
+  margin-top: 2vh;
+  color: white;
+  padding: 0.5em 1em;
+  border: none;
+}
+
+.back a{
+  text-decoration:  none;
+  color: white;
+}
+
 </style>
+<div class="al">
 
-<div id="outer" >
-  <div class="spinner " id="spn">
-
-  </div>
-  
-</div>
+ <div class="back">
+  <button><a href="{% url 'hm'%}">Back</a></button>
+ </div>
 
 
-            <div class="card bg-dark ilusion" id="il" >
+            <div class=" bg-dark ilusion" id="il" >
                 <div class="card-body">
                     
                     <div class="card-text">
@@ -163,6 +181,7 @@
                     </div>
                 </div>
             </div>
+</div>
 
 
             <script>

@@ -11,6 +11,7 @@
 
 
 
+
 <style>
   .ilusion{
     position: relative;
@@ -63,17 +64,35 @@
   100% { transform: rotateZ(360deg); border-color: #16053b; }
 }
 
+.back{
+  margin-top: 10vh;
+  margin-left: 6vw;
+  color: white;
+  font-weight: 900;
+}
+
+.back button{
+  background-color: purple;
+  margin-top: 2vh;
+  color: white;
+  padding: 0.5em 1em;
+  border: none;
+}
+
+.back a{
+  text-decoration:  none;
+  color: white;
+}
+
 </style>
+<div class="al">
 
-<div id="outer" >
-  <div class="spinner " id="spn">
-
-  </div>
-  
-</div>
+ <div class="back">
+  <button><a href="{% url 'hm'%}">Back</a></button>
+ </div>
 
 
-            <div class="card bg-dark ilusion" id="il" >
+            <div class=" bg-dark ilusion" id="il" >
                 <div class="card-body">
                     
                     <div class="card-text">
@@ -162,6 +181,7 @@
                     </div>
                 </div>
             </div>
+</div>
 
 
             <script>
