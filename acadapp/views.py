@@ -16,7 +16,7 @@ def home(request):
         message=request.POST.get('message')
         contxt ={
         "title":"Subscription",
-        "content":"Welcome to the Benbrands, dear subscriber. "
+        "content":"Welcome to the Fealas, dear subscriber. "
     }
         subscriber= Subscriber.objects.create(name=name,surname=surname,email=email,subject=subject,message=message)
         subscriber.save()
