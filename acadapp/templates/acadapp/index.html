@@ -184,23 +184,16 @@
   
   
     <Style>
-      [data-component="slideshow"] .slide {
-         display: none;
-       }
-     
-       [data-component="slideshow"] .slide.active {
-         display: block;
-       }
-       
+      
      
      #slideshow-example{
-       width: 69%;
+       width: 80%;
        margin: 0 auto;
-       /* background:linear-gradient(90deg, rgba(85,0,227,0.8) 0%, rgba(198,61,255,0.9) 100%); ; */
+       background:linear-gradient(90deg, rgba(85,0,227,0.8) 0%, rgba(198,61,255,0.9) 100%); ;
        background-color: white;
        margin-top: 2em;
        margin-bottom: 2em;
-       /* color: rgba(20, 20, 255, 0.1); */
+       color: rgba(20, 20, 255, 0.1);
        color: white;
        padding: 1em 1em;
      }
@@ -212,7 +205,7 @@
      }
   
      #slideshow-example small{
-      color: white;
+      color:purple;
      }
   
      .item{
@@ -224,10 +217,16 @@
   
      }
      
-     /* .hola{
-      background-image: url("{% static 'all/images/bg03.jpg' %}");
-     }
-      */
+     [data-component="slideshow"] .slide {
+         display: none;
+       }
+     
+       [data-component="slideshow"] .slide.activ {
+         display: block;
+        
+       }
+       
+      
        </Style>
      
   
@@ -281,7 +280,7 @@
         
         
             <div id="slideshow-example" data-component="slideshow">
-              <div role="list">
+              <div role="list" >
                 <div class="slide">
                   <div class="item">
                     <img src="{% static 'foreign/assets/images/rem.jpeg'%}" alt="">
@@ -314,7 +313,7 @@
           </div>
         
 
-          <a href="#" class="special">Learn more</a>
+          <a href="" class="special" id="nxt">Learn more</a>
         </div>
       </div>
     </section>
@@ -327,7 +326,7 @@
         <p>We provide  an array of services,that are holistic to your academic needs at comfort.</p>
         <section class="features">
           <article>
-            <a href="#" class="image"><img src="{% static 'solid/images/pic04.jpg'%}" alt="" /></a>
+            <a href="#" class="image "><img src="{% static 'solid/images/pic04.jpg'%}" alt="" /></a>
             <h3 class="major">Market place</h3>
             <p>Through our platform you get a team of highly skilled professors.</p>
             <a href="#" class="special">Learn more</a>
@@ -345,6 +344,7 @@
             <a href="#" class="special">Learn more</a>
           </article>
           <article>
+            
             <a href="#" class="image"><img src="{% static 'solid/images/pic07.jpg'%}" alt="" /></a>
             <h3 class="major">General standards</h3>
             <p>We give your work conformity to the general  standards specified.</p>
@@ -352,7 +352,7 @@
           </article>
         </section>
         <ul class="actions">
-          <li><a href="#" class="button">Browse All</a></li>
+          <li><a href="" class="button">Browse All</a></li>
         </ul>
       </div>
     </section>
@@ -406,24 +406,24 @@
           <div class="fields">
             <div class="field">
               <label for="name">Name</label>
-              <input type="text" name="name" id="name" />
+              <input type="text" name="name" id="name" required/>
             </div>
             <div class="field">
               <label for="name">Surname</label>
-              <input type="text" name="surname" id="surname" />
+              <input type="text" name="surname" id="surname" required />
             </div>
             <div class="field">
               <label for="email">Email</label>
-              <input type="email" name="email" id="email" />
+              <input type="email" name="email" id="email" required/>
             </div>
 
             <div class="field">
               <label for="name">Subject</label>
-              <input type="text" name="subject" id="subject" />
+              <input type="text" name="subject" id="subject" required/>
             </div>
             <div class="field">
               <label for="message">Message</label>
-              <textarea name="message" id="message" rows="4"></textarea>
+              <textarea name="message" id="message" rows="4" required></textarea>
             </div>
           </div>
           <ul class="actions">
@@ -450,6 +450,59 @@
 
 </div>
 
+
+<script>
+  // let sp=document.getElementById('dat')
+  //  let dt=new Date().getFullYear()
+  //  sp.innerHTML=`Copyright © ${dt.toString()} `
+  
+  
+  //  let jd=document.getElementById('jd')
+  //  let observer=new IntersectionObserver((ob)=>{
+  //   ob.forEach((b)=>{
+  //     if (b.isIntersecting){
+  //       b.target.classList.toggle('appear')
+  //     }
+  //   })
+  //  })
+  //  observer.observe(jd)
+  
+  
+  
+  
+   var slideshows = document.querySelectorAll('[data-component="slideshow"]');
+   var btn= document.getElementById('nxt')
+    // Apply to all slideshows that you define with the markup wrote
+    slideshows.forEach(initSlideShow);
+    
+  
+    function initSlideShow(slideshow) {
+  
+      var slides = document.querySelectorAll(`#${slideshow.id} [role="list"] .slide`); // Get an array of slides
+  
+      var index = 0, time = 5000;
+      slides[index].classList.add('activ'); 
+      btn.addEventListener('click',(e)=>{
+      index++
+    })
+      
+      
+      setInterval( () => {
+        slides[index].classList.remove('activ');
+        
+        //Go over each slide incrementing the index
+        index++;
+        
+        // If you go over all slides, restart the index to show the first slide and start again
+        if (index === slides.length) index = 0; 
+        
+        slides[index].classList.add('activ');
+  
+      }, time);
+    }
+  
+  </script>
+
   
    
   
@@ -459,52 +512,7 @@
   
   
   {% block script %}
-  <script>
-  let sp=document.getElementById('dat')
-   let dt=new Date().getFullYear()
-   sp.innerHTML=`Copyright © ${dt.toString()} `
-  
-  
-   let jd=document.getElementById('jd')
-   let observer=new IntersectionObserver((ob)=>{
-    ob.forEach((b)=>{
-      if (b.isIntersecting){
-        b.target.classList.toggle('appear')
-      }
-    })
-   })
-   observer.observe(jd)
-  
-  
-  
-  
-   var slideshows = document.querySelectorAll('[data-component="slideshow"]');
-    
-    // Apply to all slideshows that you define with the markup wrote
-    slideshows.forEach(initSlideShow);
-  
-    function initSlideShow(slideshow) {
-  
-      var slides = document.querySelectorAll(`#${slideshow.id} [role="list"] .slide`); // Get an array of slides
-  
-      var index = 0, time = 5000;
-      slides[index].classList.add('active');  
-      
-      setInterval( () => {
-        slides[index].classList.remove('active');
-        
-        //Go over each slide incrementing the index
-        index++;
-        
-        // If you go over all slides, restart the index to show the first slide and start again
-        if (index === slides.length) index = 0; 
-        
-        slides[index].classList.add('active');
-  
-      }, time);
-    }
-  
-  </script>
+ 
   
   <script src="{% static 'foreign/js/jquery.min.js'%}"></script>
     <script src="{% static 'foreign/js/bootstrap.min.js'%}"></script>
@@ -515,8 +523,8 @@
     <script src="{% static 'foreign/js/popup.js'%}"></script>
     <script src="{% static 'foreign/js/custom.js'%}"></script>
 
-  </div>
+  
   
   
   {% endblock %}
-  </div>
+  
