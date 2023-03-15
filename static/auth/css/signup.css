@@ -27,7 +27,7 @@
     outline: none;
 }
 .inp::placeholder{
-    color:rgb(22, 18, 64);
+    color: blue;
     font-weight: bold;
 }
 
@@ -124,7 +124,7 @@ form.auth h2{
     margin-top: 2vh;
     margin-bottom: 2vh;
     border-radius: .5em;
-    border: 1px solid white;
+    border: 1px solid purple;
     background-color: transparent;
     
 }
@@ -135,11 +135,18 @@ form.auth h2{
 
 }
 
-.al{
+@media only screen and(max-width:698px){
+
+    form.auth{
+        width: 100%;
+    }
+}
+
+/* .al{
     background-image: url('../../solid/css/images/bg01.jpg');
     background-position: top;
     
-}
+} */
 
 .errorlist{
     color: red;
@@ -150,7 +157,7 @@ form.auth h2{
 
 legend{
     text-transform: capitalize;
-    color: white;
+    
 }
 
 .error input, .error select {

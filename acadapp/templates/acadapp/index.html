@@ -122,10 +122,10 @@
         <div class="row">
           <div class="col-lg-7">
             <div class="caption header-text">
-              <h6>FEALAS</h6>
+              <h6>Fealas</h6>
               <div class="line-dec"></div>
-              <h4 style="color: white;">Join <em>academic writing</em> Journey With Fealas</h4>
-              <p> We provide an efficient academic writing platform, relived with tools and the best expertise in the market <a href="index.html">Home</a>, <a href="about.html">About</a>, and <a href="faqs.html">FAQ</a>.</p>
+              <h2 style="color: grey; font-weight: 900;">Join  <em>Fealas</em> Today</h2>
+              <p> We provide an efficient academic writing platform, relived with tools and the best expertise in the market .</p>
               <div class="main-button scroll-to-section"><a href="{% url 'stud' %}"> Register as student</a></div>
               <span>or</span>
               <div class="second-button"><a href="{% url 'proreg' %}">Register as professor</a></div>
@@ -234,6 +234,24 @@
          display: block;
         
        }
+
+       @media screen and (max-width=700px){
+        #slideshow-example,.container,.item{
+          width: 100%;
+          margin: 0;
+        }
+        .projects section{
+          width: 100%;
+        }
+
+        [role="list"]{
+          width: 100%;
+        }
+
+       }
+       .features article{
+        background-color:  #5b03e4;;
+       }
        
       
        </Style>
@@ -250,44 +268,23 @@
     
 
 
-    <section id="three" class="wrapper spotlight style3">
+    <section id="three" class="wrapper spotlight style3" >
       <div class="inner">
-        <!-- <a href="#" class="image"><img src="images/pic03.jpg" alt="" /></a> 
-        -->
-        <!-- <div class="join" id="j" style="color: white; background-color: white;">
-          <h6>Join us today</h6>
-      
-         <div class="mr" style="color: white; background-color: white;" >
-          <a href="{% url 'stud' %}">As student</a>
-          <a href="{% url 'proreg'%}">As professor</a>
-         </div>
-      
-        </div> -->
-
-       
-
-
-
-        <div class="content">
-          <h2 class="major">Reviews</h2>
-          <!-- <p>Lorem ipsum dolor sit amet, etiam lorem adipiscing elit. Cras turpis ante, nullam sit amet turpis non, sollicitudin posuere urna. Mauris id tellus arcu. Nunc vehicula id nulla dignissim dapibus. Nullam ultrices, neque et faucibus viverra, ex nulla cursus.</p> -->
+        <div class="content" >
+          
+          
           <div class="projects section" id="projects">
             <div class="container">
               <div class="row">
                 <div class="col-lg-6">
                   <div class="section-heading">
-                    <h2> Our <em>Experience</em>  <span></span></h2>
+                    <h2 style="color: white;"> The <em style="color: #f0f0f0;">Experience</em>  <span></span></h2>
                     <div class="line-dec"></div>
                     <p>What do our clients say.</p>
                   </div>
                 </div>
               </div> 
             </div>
-        
-        
-        
-        
-        
             <div id="slideshow-example" data-component="slideshow">
               <div role="list" >
                 <div class="slide">
@@ -320,21 +317,20 @@
               </div>
             </div>
           </div>
-        
-
-          <a href="" class="special" id="nxt">Learn more</a>
+          <a href="" class="special" id="nxt">Next</a>
         </div>
       </div>
     </section>
+
   
 
 
     <section id="four" class="wrapper alt style1">
       <div class="inner">
-        <h2 class="major">Services</h2>
+        <h2 class="major" style="color: purple;">Services</h2>
         <p>We provide  an array of services,that are holistic to your academic needs at comfort.</p>
         <section class="features">
-          <article>
+          <article >
             <a href="#" class="image "><img src="{% static 'solid/images/pic04.jpg'%}" alt="" /></a>
             <h3 class="major">Professional Writing</h3>
             <p>Have your writing needs met with a professional touch with us.</p>
@@ -346,12 +342,12 @@
             <p>You can consult with us about your finances</p>
             <a href="#" class="special">Learn more</a>
           </article>
-          <!-- <article>
+          <article>
             <a href="#" class="image"><img src="{% static 'solid/images/pic06.jpg'%}" alt="" /></a>
             <h3 class="major">Grammarly Checks</h3>
             <p>We ensure your work conforms to the language requirements</p>
             <a href="#" class="special">Learn more</a>
-          </article> -->
+          </article>
           <article>
             
             <a href="#" class="image"><img src="{% static 'solid/images/pic07.jpg'%}" alt="" /></a>
@@ -406,7 +402,7 @@
 
 
     <!-- Footer -->
-    <section id="footer">
+    <section id="footer" style="background-color: black;">
       <div class="inner">
         <h2 class="major">Get in touch</h2>
         <p>We value your feedback,you are encouraged to leave reviews and comments to us,our duty is your service.</p>
@@ -452,7 +448,7 @@
           <li class="icon brands fa-instagram"><a href="#">instagram.com/fealas</a></li>
         </ul>
         <ul class="copyright">
-          <li>&copy; Fealas Ventures. All rights reserved.</li><li>Design: feasal inc</li>
+          <li>&copy; Fealas Ventures. All rights reserved.</li><li>Design: fealas inc</li>
         </ul>
       </div>
     </section>

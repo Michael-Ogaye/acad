@@ -1,0 +1,122 @@
+import cloudinary
+from cloudinary.uploader import upload
+from django.shortcuts import render
+
+def upload_files(request):
+    if request.method == 'POST':
+        files = request.FILES.getlist('files')
+        for file in files:
+            uploaded_file = upload(file, resource_type='auto')
+            # Do something with the uploaded file
+        return render(request, 'upload_success.html')
+    return render(request, 'upload_form.html')
+
+
+
+
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="files">Select files to upload:</label>
+    <input type="file" name="files" id="files" multiple>
+    <button type="submit">Upload files</button>
+</form>
+
+
+
+
+import cloudinary
+from cloudinary.uploader import upload
+from cloudinary.api import resources
+from django.shortcuts import render
+
+def upload_files(request):
+    if request.method == 'POST':
+        files = request.FILES.getlist('files')
+        file_urls = []
+        for file in files:
+            uploaded_file = upload(file, resource_type='auto')
+            file_urls.append(uploaded_file['secure_url'])
+        context = {'file_urls': file_urls}
+        return render(request, 'upload_success.html', context)
+    return render(request, 'upload_form.html')
+    
+    
+    
+    {% for file_url in file_urls %}
+    <a href="{{ file_url }}" download>Download file</a>
+{% endfor %}
+
+
+
+
+
+
+
+
+
+import cloudinary
+from cloudinary.uploader import upload
+from cloudinary.api import resources, download_url
+from django.shortcuts import render
+
+def upload_files(request):
+    if request.method == 'POST':
+        files = request.FILES.getlist('files')
+        file_contents = []
+        for file in files:
+            uploaded_file = upload(file, resource_type='auto')
+            file_url = uploaded_file['secure_url']
+            file_name = uploaded_file['original_filename']
+            file_resource = resources(public_id=uploaded_file['public_id'])[0]
+            file_content = download_url(file_url)
+            file_contents.append({'name': file_name, 'content': file_content})
+        context = {'file_contents': file_contents}
+        return render(request, 'upload_success.html', context)
+    return render(request, 'upload_form.html')
+    
+    
+    
+    
+    from cloudinary_storage.models import CloudinaryFileField
+
+class MyModel(models.Model):
+    file = CloudinaryFileField()
+    
+    
+    
+    
+    
+    
+    def upload_files(request):
+    if request.method == 'POST':
+        form = FileUploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('upload_success')
+    else:
+        form = FileUploadForm()
+    return render(request, 'upload_form.html', {'form': form})
+    
+    
+    
+    
+    from cloudinary_storage.forms import CloudinaryFileField
+
+class FileUploadForm(forms.Form):
+    file = CloudinaryFileField()
+    
+    
+    
+    from .models import MyModel
+
+def upload_success(request):
+    instances = MyModel.objects.all()
+    return render(request, 'upload_success.html', {'instances': instances})
+
+
+
+
+
+
+
