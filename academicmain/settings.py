@@ -122,7 +122,7 @@ else:
 
 AUTH_USER_MODEL='Authapp.CustomUser'
 
-CSRF_TRUSTED_ORIGINS = ['https://*.railway.app','https://*.ngrok.io','*fealas.com']
+CSRF_TRUSTED_ORIGINS = ['https://*.railway.app','https://*.ngrok.io']
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
