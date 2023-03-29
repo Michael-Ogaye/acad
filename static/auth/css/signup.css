@@ -4,13 +4,13 @@
     box-sizing: border-box;
 }
 
-.lebal{
+/* .lebal{
     color: #838de8;
     display: block;
     margin-top: .5em;
     margin-bottom: .5em;
     margin: 0 auto;
-}
+} */
 .inp{
     display: block;
     outline: none;
@@ -21,6 +21,7 @@
     border: none;
     background-color: transparent;
     color: black;
+    position: relative;
 }
 .inp:focus{
     background-color: transparent;
@@ -123,7 +124,7 @@ form.auth h2{
     width: 80%;
     margin-top: 2vh;
     margin-bottom: 2vh;
-    border-radius: .5em;
+    border-radius: .2em;
     border: 1px solid purple;
     background-color: transparent;
     
@@ -135,10 +136,20 @@ form.auth h2{
 
 }
 
-@media only screen and(max-width:698px){
+@media screen and (max-width:698px){
 
     form.auth{
         width: 100%;
+        
+    }
+
+    .card-body{
+        width: 100%;
+      
+    }
+
+    .fm fieldset{
+        border-radius: 0.2em;
     }
 }
 
@@ -163,3 +174,74 @@ legend{
 .error input, .error select {
     border: 2px red solid;
     }
+
+
+    .head-image{
+        margin: 0 auto;
+        text-align: center;
+        margin-bottom: 1em;
+        display: flex;
+        justify-content: center;
+        /* background-color: #f0f0f0; */
+        /* padding: 5em 1em; */
+        width: 50%;
+        /* aspect-ratio: 1;
+        border-radius: 50%; */
+        /* border: 1px dotted purple;
+         */
+    }
+
+    
+
+    .head-image img{
+        display: block;
+        width: 100%;
+        
+    }
+
+    @media screen and(max-width:900px){
+        .head-image{
+            padding:1px 1px ;
+            border-radius: none;
+            width: 100%;
+        }
+    }
+    .al,body{
+        margin-top: 0;
+    }
+
+
+    .back{
+  
+        margin-left: 6vw;
+        color: white;
+        font-weight: 900;
+      }
+      
+      .back button{
+        background-color: purple;
+       
+        color: white;
+        padding: 0.5em 1em;
+        border: none;
+      }
+      
+      .back a{
+        text-decoration:  none;
+        color: white;
+      }
+      input[type="password"]::placeholder::after {
+        content: '\1F441';
+        position: absolute;
+        right: 2px;
+        top: 2px;
+        width: 3vw;
+        height: 3vw;
+        z-index: 34;
+        background-color: red;
+    }
+header{
+    background:linear-gradient(90deg, rgba(85,0,227,0.8) 0%, rgba(198,61,255,0.9) 100%); 
+    width: 100%;
+}
+

@@ -106,6 +106,13 @@ if MODE=='dev':
             'PASSWORD':config('DB_PASSWORD'),
             }
         }
+elif MODE=='render':
+      DATABASES = {
+        "default": dj_database_url.config(default=config('DATABASE_URL_RENDER'), conn_max_age=1800),
+    }
+    
+
+
 else:
 
     DATABASES = {

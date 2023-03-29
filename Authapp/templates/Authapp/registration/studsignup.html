@@ -4,6 +4,7 @@
 {% load widget_tweaks %}
 {% block style %}
 <link rel="stylesheet" href="{% static 'auth/css/signup.css' %}">
+<link rel="stylesheet" href="{% static 'foreign/css/home.css'%}">
 {% endblock %}
 
 
@@ -64,25 +65,7 @@
   100% { transform: rotateZ(360deg); border-color: #16053b; }
 }
 
-.back{
-  margin-top: 10vh;
-  margin-left: 6vw;
-  color: white;
-  font-weight: 900;
-}
 
-.back button{
-  background-color: purple;
-  margin-top: 2vh;
-  color: white;
-  padding: 0.5em 1em;
-  border: none;
-}
-
-.back a{
-  text-decoration:  none;
-  color: white;
-}
 
 </style>
 <div class="al">
@@ -94,11 +77,15 @@
 
             <div class=" bg-dark ilusion" id="il" >
                 <div class="card-body">
+                  <div class="head-image">
+                    <img src="{% static 'foreign/assets/images/fealas_logo.jpg'%}" alt="" style="max-width: 112px; ">
+                  </div>
+                    
                     
                     <div class="card-text">
                         <form action="" method="post" novalidate class="auth" id="auth">
                             {% csrf_token%}
-                             <h2>Signup as a Student</h2>
+                             <h2 style=" color:rgb(53, 60, 190);">Signup as a Student</h2>
  
                             <div class="form-group fm ">
                                 <!-- <label class="form-label"  for="email"> Email</label> -->
@@ -113,17 +100,7 @@
                              {% endif %}
                               </div>
                                
-                            <div class="form-group fm">
-                                <fieldset>
-                                    <legend>
-                                        Phone Number
-                                    </legend>
-                                    {% render_field form.phone_number type="text" class="form-control inp " placeholder="e.g +1-5679885432" id="phone" name="phone_number" %}
-                                </fieldset>
-                                {% if form.phone_number.errors %}
-                                <div class="div_warn" style="margin: 0 auto; color: red;" > <p style="color: red; list-style: none;" class="warn">{{ form.phone_number.errors }}</p></div>
-                              {% endif %}
-                            </div>
+                           
 
 
                             <div class="form-group fm">
@@ -146,7 +123,8 @@
                                 <fieldset>
                                     <legend>Password</legend>
                 
-                                {% render_field form.password type="text" class="form-control inp " id="pass" placeholder="*****" type="password" required="true" name="password" %}
+                                {% render_field form.password  class="form-control inp " id="pass" placeholder="*****" type="password" required="true" name="password" %}
+                                
                                 </fieldset>
                                 {% if form.password.errors %}
                                 <div class="div_warn"><p style="color: red; " class="warn">{{ form.password.errors }}</p></div>
@@ -160,7 +138,7 @@
                                 <fieldset>
                                     <legend>confirm Password</legend>
                 
-                                {% render_field form.password1 type="text" class="form-control inp " id="pass" placeholder="*****" type="password" required="true" name="password1" %}
+                                {% render_field form.password1  class="form-control inp " id="pass" placeholder="*****" type="password" required="true" name="password1" %}
                                 </fieldset>
                                 {% if form.password1.errors %}
                                 <div class="div_warn" ><p style="color: red; " class="warn">{{ form.password1.errors }}</p></div>
@@ -181,6 +159,13 @@
                     </div>
                 </div>
             </div>
+</div>
+
+<div class="footer" style="background-color: #222759;color: white; height: 10vh; margin-top: 15vh; display: flex; justify-content: center;align-items: center;">
+  <small>
+ Fealas inc
+  </small>
+
 </div>
 
 

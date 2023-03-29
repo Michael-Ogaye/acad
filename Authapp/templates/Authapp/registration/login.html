@@ -34,28 +34,93 @@
         margin-top: 1vh;
         padding: .5em 1em;
         }
+
+        @media screen and (max-width:700px){
+            .bot{
+                width: 70%;
+                flex-direction: column;
+            }
+            .regs{
+                flex-direction: column;
+            }
+        }
+
+
+        .success{
+
+            color: lightgreen;
+            padding: 1em 1em ;
+            margin: 0 auto;
+            width: 50%;
+            background-color: rgba(107, 122, 122, 0.3);
+            position: relative;
+            z-index: 1;
+            background-color: rgb(108, 144, 98) ;
+            margin-bottom: 2vh;
+        }
+
+        .error{
+            color: lightcoral;
+            padding: 1em 1em ;
+            margin: 0 auto;
+            width: 50%;
+            position: relative;
+            z-index: 1;
+            background-color: rgb(232, 217, 220) ;
+            margin-bottom: 2vh;
+
+        }
+
+        .message-close{
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            padding: 2px 4px;
+            border: none;
+            color: white;
+            background-color: purple;
+            margin-bottom: 1px;
+
+
+        }
     
 </style>
 
 
             <div class="card bg-dark" >
                 <div class="card-body">
+
+                    <div class="mes">
+                        {% if messages%}
+                        {% for message in messages%}
+
+                        {% if message.tags == "success" %}
+                        <div class="success">
+                            <button class="message-close">X</button>
+
+                            <p>{{message}}</p>
+
+                        </div>
+
+                        {% elif message.tags == "error" %}
+                        <div class="error">
+                            <button class="message-close">X</button>
+                            <p>{{message}}</p>
+
+                        </div>
+                        {% endif %}
+                        
+                        {% endfor%}
+
+                        {% endif%}
+                    </div>
                     
                     <div class="card-text">
+                        
                         <form  method="post" action="{% url 'login' %}" class="auth" id="auth">
-
-
-
                             {% csrf_token%}
-                             <h2>Login</h2>
-                             {% for errors in form.non_field_errors%}
-                             <h1>{{error}}</h1>
-
-                             {% endfor%}
-
-                             {{ form.non_field_errors }}
-                             {{ form.email.errors }}
-                             {{form.password.errors}}
+                             <h2 style="color: #616aeb;">Login</h2>
+                            
  
                             <div class="form-group fm ">
                                 <!-- <label class="form-label"  for="email"> Email</label> -->
@@ -120,6 +185,21 @@
                 </div>
             </div>
 
+
+            <script>
+
+                let bts=document.querySelectorAll('.message-close')
+                bts.forEach((bt)=>{
+                    bt.addEventListener('click',(e)=>{
+                        bt.parentElement.remove()
+                    })
+
+                    setTimeout(() => {
+                        bt.parentElement.remove()
+                        
+                    }, 7000);
+                })
+            </script>
         
 
 {% endblock %}

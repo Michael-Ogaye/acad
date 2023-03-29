@@ -29,9 +29,8 @@
     <div class="preloader-inner">
       <span class="dot"></span>
       <div class="dots">
-        <span></span>
-        <span></span>
-        <span></span>
+        
+        <img src="{% static 'foreign/assets/images/fealas_logo.jpg'%}" alt="" style=" width: 100%; height: 100%;">
       </div>
     </div>
   </div>
@@ -71,14 +70,13 @@
         <div class="row">
             <div class="col-12">
                 <nav class="main-nav">
-                    <h2 class="logo" style="color: white;">
-                        Fealas
+                   
 
                     </h2>
                     <!-- ***** Logo Start ***** -->
-                    <!-- <a href="index.html" class="logo">
-                        <img src="{% static 'foreign/assets/images/logo.png'%}" alt="" style="max-width: 112px;">
-                    </a> -->
+                    <a href="" class="logo" >
+                        <img src="{% static 'foreign/assets/images/fealas_logo.jpg'%}" alt="" style="max-width: 112px; ">
+                    </a> 
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
@@ -122,9 +120,9 @@
         <div class="row">
           <div class="col-lg-7">
             <div class="caption header-text">
-              <h6>Fealas</h6>
+              <h6 style="color: #a72ed6;">Fealas</h6>
               <div class="line-dec"></div>
-              <h2 style="color: grey; font-weight: 900;">Join  <em>Fealas</em> Today</h2>
+              <h2 style="color: #5b03e4; font-weight: 900; text-transform: capitalize;">Join  Today</h2>
               <p> We provide an efficient academic writing platform, relived with tools and the best expertise in the market .</p>
               <div class="main-button scroll-to-section"><a href="{% url 'stud' %}"> Register as student</a></div>
               <span>or</span>
@@ -136,60 +134,11 @@
     </div>
 
 
-  <div class="hol">
+  
   
     
   
-    <!-- <div class="services section" id="services">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6 offset-lg-6">
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="section-heading">
-                  <h2>Our <em> Services</em> 
-                    <span></span></h2>
-                    <div class="line-dec"></div>
-                    <p>We connect you to the real academic talents.</p>
-                </div>
-              </div>
-              <div class="col-lg-6 col-sm-6">
-                <div class="service-item">
-                  <div class="icon">
-                    <img src="{% static 'foreign/assets/images/services-01.jpg'%}" alt="discover SEO" class="templatemo-feature">
-                  </div>
-                  <h4>Learn more on academic writing tools that we provide</h4>
-                </div>
-              </div>
-              <div class="col-lg-6 col-sm-6">
-                <div class="service-item">
-                  <div class="icon">
-                    <img src="{% static 'foreign/assets/images/services-02.jpg'%}" alt="data analysis" class="templatemo-feature">
-                  </div>
-                  <h4>Academic writing marketplace</h4>
-                </div>
-              </div>
-              <div class="col-lg-6 col-sm-6">
-                <div class="service-item">
-                  <div class="icon">
-                    <img src="{% static 'foreign/assets/images/services-03.jpg'%}" alt="precise data" class="templatemo-feature">
-                  </div>
-                  <h4>Precise talent matching &amp; bidding </h4>
-                </div>
-              </div>
-              <div class="col-lg-6 col-sm-6">
-                <div class="service-item">
-                  <div class="icon">
-                    <img src="{% static 'foreign/assets/images/services-03.jpg'%}" alt="SEO marketing" class="templatemo-feature">
-                  </div>
-                  <h4>Plagiriasm&amp; Grammar check</h4>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> -->
+   
   
   
     <Style>
@@ -235,7 +184,7 @@
         
        }
 
-       @media screen and (max-width=700px){
+       @media screen and (max-width:700px){
         #slideshow-example,.container,.item{
           width: 100%;
           margin: 0;
@@ -248,11 +197,18 @@
           width: 100%;
         }
 
+
+        #slideshow-example img{
+        width: 100%;
        }
+
+       }
+
        .features article{
         background-color:  #5b03e4;;
        }
        
+      
       
        </Style>
      
@@ -527,6 +483,7 @@
     <script src="{% static 'foreign/js/tabs.js'%}"></script>
     <script src="{% static 'foreign/js/popup.js'%}"></script>
     <script src="{% static 'foreign/js/custom.js'%}"></script>
+    <script src="{% static 'foreign/js/intersect.js'%}"></script>
 
   
   

@@ -22,7 +22,7 @@ class SRegForm(forms.ModelForm):
 
     class Meta:
      model = Student
-     fields = [ 'email', 'phone_number','username','password']
+     fields = [ 'email','username','password']
 
 
     def clean_password1(self):
@@ -58,19 +58,19 @@ class SRegForm(forms.ModelForm):
             raise forms.ValidationError('User with the email exists',code='user exists')
         return email
     
-    def clean_phone_number(self):
-        phone_number = self.cleaned_data.get('phone_number')
-        if len(phone_number)==0:
-            raise forms.ValidationError(
-                self.error_messages['phone_required'],
-                code='phone_required'
-            )
+    # def clean_phone_number(self):
+    #     phone_number = self.cleaned_data.get('phone_number')
+    #     if len(phone_number)==0:
+    #         raise forms.ValidationError(
+    #             self.error_messages['phone_required'],
+    #             code='phone_required'
+    #         )
         
-        if len(phone_number)<5:
-            raise forms.ValidationError('Phone number must be in format +[number]-[more than 6 numbers less than 15 numbers ]')
-        if CustomUser.objects.filter(phone_number=phone_number).exists():
-            raise forms.ValidationError('A user with similiar phone number exists')
-        return phone_number
+    #     if len(phone_number)<5:
+    #         raise forms.ValidationError('Phone number must be in format +[number]-[more than 6 numbers less than 15 numbers ]')
+    #     if CustomUser.objects.filter(phone_number=phone_number).exists():
+    #         raise forms.ValidationError('A user with similiar phone number exists')
+    #     return phone_number
     
 
     def clean_password(self):
@@ -105,7 +105,7 @@ class PRegForm(forms.ModelForm):
 
     class Meta:
      model = Professor
-     fields = [ 'email', 'phone_number','username','password']
+     fields = [ 'email','username','password']
 
     def clean_password1(self):
         password = self.cleaned_data.get("password")
@@ -140,18 +140,18 @@ class PRegForm(forms.ModelForm):
             raise forms.ValidationError('User with the email exists',code='user exists')
         return email
     
-    def clean_phone_number(self):
-        phone_number = self.cleaned_data.get('phone_number')
-        if len(phone_number)==0:
-            raise forms.ValidationError(
-                self.error_messages['phone_required'],
-                code='phone_required'
-            )
-        if len(phone_number)<5:
-            raise forms.ValidationError('Phone number must be in format +[number]-[more than 6 numbers less than 15 numbers ]')
-        if CustomUser.objects.filter(phone_number=phone_number).exists():
-            raise forms.ValidationError('A user with similiar phone number exists')
-        return phone_number
+    # def clean_phone_number(self):
+    #     phone_number = self.cleaned_data.get('phone_number')
+    #     if len(phone_number)==0:
+    #         raise forms.ValidationError(
+    #             self.error_messages['phone_required'],
+    #             code='phone_required'
+    #         )
+    #     if len(phone_number)<5:
+    #         raise forms.ValidationError('Phone number must be in format +[number]-[more than 6 numbers less than 15 numbers ]')
+    #     if CustomUser.objects.filter(phone_number=phone_number).exists():
+    #         raise forms.ValidationError('A user with similiar phone number exists')
+    #     return phone_number
         
         
     

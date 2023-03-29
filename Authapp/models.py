@@ -16,7 +16,7 @@ class CustomUserManager(BaseUserManager):
     """
     use_in_migrations = True
 
-    def create_user(self , email ,phone_number,username, password = None,**extra_fields):
+    def create_user(self , email ,username, password = None,**extra_fields):
         if not email or len(email) <= 0 : 
             raise  ValueError("Email field is required !")
         if not password :
@@ -24,7 +24,7 @@ class CustomUserManager(BaseUserManager):
           
         user = self.model(
             email = self.normalize_email(email) ,
-            phone_number=phone_number ,
+           
             username=username,
             **extra_fields
         )
@@ -32,10 +32,9 @@ class CustomUserManager(BaseUserManager):
         user.save(using = self._db)
         return user
       
-    def create_superuser(self , email , username,password,phone_number,**extra_fields):
+    def create_superuser(self , email , username,password,**extra_fields):
         user = self.create_user(
             email = self.normalize_email(email) ,
-            phone_number=phone_number,
             password = password,
             username=username,
             **extra_fields
@@ -60,7 +59,7 @@ class CustomUser(AbstractBaseUser,PermissionsMixin):
                             # Default is user is teacher
                             default = Types.C_ADMIN)
      email = models.EmailField(max_length = 200 , unique = True)
-     phone_number=models.CharField(max_length=65,unique=True,validators=[phone_regex])
+    #  phone_number=models.CharField(max_length=65,unique=True)
      username=models.CharField(max_length=30,null=True)
      password=models.CharField(max_length=100)
      date_joined=models.DateTimeField(auto_now_add=True,max_length=100)

@@ -35,7 +35,7 @@ def stureg(request):
           stud.save()
           activate_account(request,stud)
          
-          messages.success(request,f'A link has been sent to your email acccount,please confirm your account and log in')
+          messages.add_message(request,messages.SUCCESS,f'Registration succesful,a link has been sent to your email acccount,please confirm your account and log in')
           return redirect('login')
        
        else:
@@ -60,12 +60,10 @@ def preg(request):
          
           pro.save()
           activate_account(request,pro)
-          messages.success(request,f'A link has been sent to your email acccount,please confirm your account and log in')
+          messages.add_message(request,messages.SUCCESS,f'Registration succesful, a link has been sent to your email acccount,please confirm your account and log in')
           return redirect('login')
        else:
-          
           form=SRegForm(request.POST)
-          print(form.errors)
           return render(request,'Authapp/registration/profsignup.html',{'form':form})
 
     else:
@@ -83,7 +81,6 @@ def signin(request):
       
     
       if form.is_valid():
-         print('form is valid...first test')
          password=form.cleaned_data.get('password')
          email=form.cleaned_data.get('email')
          user=authenticate(request,username=email,password=password)
@@ -96,12 +93,11 @@ def signin(request):
             else:
                return HttpResponse('you are being directed to admin page shortly')
          else:
-            return HttpResponse('user doesnt exist or you have not activated your account')   
+            form=SignForm(request.POST)
+            messages.error(request,'Your details are invalid make sure you have confirmed your account or you are using correct details to login')
+            return render(request,'Authapp/registration/login.html',{'form':form})   
       else:
-         form=SignForm()
-         print('form is invalid')
-
-         messages.error(request,f'Please make sure you have provided your details in corrrect format')
+         form=SignForm(request.POST)
          return render(request,'Authapp/registration/login.html',{'form':form})
    else:
        form=SignForm()
