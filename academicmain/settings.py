@@ -173,7 +173,7 @@ STATICFILES_DIRS = [
    
 ]
 
-STATICFILES_STORAGE = "whitenoise.CompressedStaticFilesStorage"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 WHITENOISE_MANIFEST_STRICT = False
 
 MEDIA_URL='media/'
